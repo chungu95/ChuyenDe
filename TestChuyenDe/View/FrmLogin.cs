@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using TestChuyenDe.DAL.connect;
+using TestChuyenDe.View;
 
 namespace TestChuyenDe
 {
@@ -21,14 +22,9 @@ namespace TestChuyenDe
             SqlConnection con = Connect.GetConnection();
             if (con != null && con.State == ConnectionState.Open)
             {
-                MessageBox.Show("kết nối thành công");
-
-            }
-            else if (con.State == ConnectionState.Closed)
-            {
-                MessageBox.Show("kết nối đã đóng");
-            }
-            else
+                Form form = new MainForm();
+                this.Hide();form.Show();
+            } else
             {
                 MessageBox.Show("Kết nối thất bại");
             }

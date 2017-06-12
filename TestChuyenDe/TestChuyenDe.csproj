@@ -38,8 +38,10 @@
   <ItemGroup>
     <Reference Include="DevExpress.BonusSkins.v15.1" />
     <Reference Include="DevExpress.Data.v15.1" />
+    <Reference Include="DevExpress.Printing.v15.1.Core, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v15.1" />
     <Reference Include="DevExpress.Sparkline.v15.1.Core" />
+    <Reference Include="DevExpress.XtraBars.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v15.1" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -54,15 +56,58 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\connect\Connect.cs" />
-    <Compile Include="FrmLogin.cs">
+    <Compile Include="View\FrmDichVu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmLogin.Designer.cs">
+    <Compile Include="View\FrmDichVu.Designer.cs">
+      <DependentUpon>FrmDichVu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmGiaoDichVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmGiaoDichVien.Designer.cs">
+      <DependentUpon>FrmGiaoDichVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmGuiTien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmGuiTien.Designer.cs">
+      <DependentUpon>FrmGuiTien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmKhachHang.Designer.cs">
+      <DependentUpon>FrmKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmLaiSuat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmLaiSuat.Designer.cs">
+      <DependentUpon>FrmLaiSuat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FrmLogin.resx">
+    <Compile Include="View\FrmRutTien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmRutTien.Designer.cs">
+      <DependentUpon>FrmRutTien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="View\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -74,6 +119,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
