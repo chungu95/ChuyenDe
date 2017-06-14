@@ -16,7 +16,7 @@ namespace TestChuyenDe.View
     public partial class FrmDichVu : DevExpress.XtraEditors.XtraForm
     {
         private int currentRow;
-
+        private int mode;
         public FrmDichVu()
         {
             InitializeComponent();
@@ -25,6 +25,28 @@ namespace TestChuyenDe.View
         private void gridControl1_Click(object sender, EventArgs e)
         {
 
+        }
+
+
+        private void clearEdit()
+        {
+            tbMADV.Text = "";
+            tbKYHAN.Text = "";
+            tbTENDV.Text = "";
+        }
+
+        private void enableEdit()
+        {
+            tbMADV.Enabled = true;
+            tbKYHAN.Enabled = true;
+            tbTENDV.Enabled = true;
+        }
+
+        private void disableEdit()
+        {
+            tbMADV.Enabled = false;
+            tbKYHAN.Enabled = false;
+            tbTENDV.Enabled = false;
         }
 
         private void FrmDichVu_Load(object sender, EventArgs e)
@@ -55,6 +77,34 @@ namespace TestChuyenDe.View
                     //textDC.Text = Convert.ToString(result.Rows[currentRow].ItemArray[2]);
                 
             }
+        }
+
+        private void btnThemDV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            enableEdit();
+            clearEdit();
+            //gridView1.RefreshData
+            btnGhi.Text = "Thêm";
+            mode = 1;
+         }
+
+        private void btnXoaDV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            enableEdit();
+            clearEdit();
+            btnGhi.Text = "Xóa";
+            mode = 2;
+               
+            
+
+        }
+
+        private void btnSửa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            enableEdit();
+            clearEdit();
+            btnGhi.Text = "Sửa";
+            mode = 3;
         }
     }
 }
