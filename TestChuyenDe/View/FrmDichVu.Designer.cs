@@ -224,6 +224,7 @@
             this.btnGhi.Size = new System.Drawing.Size(75, 23);
             this.btnGhi.TabIndex = 11;
             this.btnGhi.UseVisualStyleBackColor = true;
+            this.btnGhi.Click += new System.EventHandler(this.btnGhi_Click);
             // 
             // FrmDichVu
             // 
