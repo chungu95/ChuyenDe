@@ -86,6 +86,9 @@ namespace TestChuyenDe.View
             //gridView1.RefreshData
             btnGhi.Text = "Thêm";
             mode = 1;
+           
+
+
          }
 
         private void btnXoaDV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -105,6 +108,34 @@ namespace TestChuyenDe.View
             clearEdit();
             btnGhi.Text = "Sửa";
             mode = 3;
+        }
+
+        private void btnGhi_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = Connect.GetConnection();
+            if (mode == 1)
+            {
+                string madv = tbMADV.Text;
+                string tendv = tbTENDV.Text;
+                string kyhan = tbKYHAN.Text;
+                using (SqlCommand spCommand = con.CreateCommand())
+                {
+                    spCommand.CommandText = "SP_ThemDV";
+                    spCommand.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    spCommand.Parameters.AddWithValue("@MADV", madv);
+                    spCommand.Parameters.AddWithValue("@KYHAN", kyhan);
+                    spCommand.Parameters.AddWithValue("@TENDV", tendv);
+                    try
+                    {
+                        spCommand.ExecuteNonQuery();
+                        MessageBox.Show("Thêm thành công");
+                    }
+                   catch (Exception ex) { }
+                    gridView1.RefreshData();
+
+                }
+            }
         }
     }
 }

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraBars;
+using DevExpress.XtraReports.UI;
 
 namespace TestChuyenDe.View
 {
@@ -130,5 +131,32 @@ namespace TestChuyenDe.View
                 f.Show();
             }
         }
+
+        private void btnDanhsachDV_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Report_LietKeDV report = new Report_LietKeDV();
+            ReportPrintTool printtool = new ReportPrintTool(report);
+            printtool.ShowPreview();
+         }
+
+        private void btnXacnhan_Click(object sender, EventArgs e)
+        {}
+
+        private void btnPhieuguitientrongkhoangthoigian_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Form frm = this.IsExist(typeof(TestChuyenDe.View.FrmLietKePhieuGuiTrongKhoangThoiGian));
+            if (frm != null)
+            {
+                frm.Activate();
+                Console.Write(frm);
+            }
+            else
+            {
+                Console.Write(frm);
+                TestChuyenDe.View.FrmLietKePhieuGuiTrongKhoangThoiGian f = new TestChuyenDe.View.FrmLietKePhieuGuiTrongKhoangThoiGian();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
     }
-}
+    }
