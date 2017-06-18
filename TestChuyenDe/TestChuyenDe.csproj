@@ -59,6 +59,7 @@
     <Reference Include="DevExpress.XtraReports.v15.1.Extensions, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -70,6 +71,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\connect\Connect.cs" />
+    <Compile Include="Model\Login.cs" />
+    <Compile Include="View\frmAddLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmAddLogin.Designer.cs">
+      <DependentUpon>frmAddLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FrmDichVu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +153,9 @@
       <DependentUpon>XtraReport1.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="View\frmAddLogin.resx">
+      <DependentUpon>frmAddLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FrmDichVu.resx">
       <DependentUpon>FrmDichVu.cs</DependentUpon>
     </EmbeddedResource>

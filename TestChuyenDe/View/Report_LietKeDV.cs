@@ -1,17 +1,12 @@
-﻿using System;
-using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
-using DevExpress.XtraReports.UI;
+﻿using DevExpress.XtraReports.UI;
 
 namespace TestChuyenDe.View
 {
-    public partial class Report_LietKeDV : DevExpress.XtraReports.UI.XtraReport
+    public partial class Report_LietKeDV : XtraReport
     {
         public Report_LietKeDV()
         {
             InitializeComponent();
         }
-
     }
 }
