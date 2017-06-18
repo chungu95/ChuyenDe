@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Data;
-using System.Data.SqlClient;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 using TestChuyenDe.DAL.connect;
 using TestChuyenDe.View;
+using TestChuyenDe.Model;
 
 namespace TestChuyenDe
 {
-    public partial class FrmLogin : DevExpress.XtraEditors.XtraForm
+    public partial class FrmLogin : XtraForm
     {
         public FrmLogin()
         {
@@ -17,18 +18,21 @@ namespace TestChuyenDe
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            Connect.Username = txtLoginName.Text;
-            Connect.Password = txtPassword.Text;
-            SqlConnection con = Connect.GetConnection();
+            Login.LgName = txtLoginName.Text;
+            Login.Password = txtPassword.Text;
+            Connect.ConnectionString = "Data Source=" + Connect.DatasourceName + ";Initial Catalog=" + Connect.DatabaseName +
+                               ";User ID=" + Login.LgName + ";Password=" + Login.Password;
+            var con = Connect.GetConnection();
             if (con != null && con.State == ConnectionState.Open)
             {
                 Form form = new MainForm();
-                this.Hide();form.Show();
-            } else
+                Hide();
+                Login.doLogin();form.Show();
+            }
+            else
             {
                 MessageBox.Show("Kết nối thất bại");
             }
         }
-
     }
 }
