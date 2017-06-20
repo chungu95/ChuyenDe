@@ -4,36 +4,21 @@ using System.Data.SqlClient;
 
 namespace TestChuyenDe.DAL.connect
 {
-
-    class Connect
+    internal class Connect
     {
-        private static readonly string DatasourceName = "localhost";
-        private static readonly string DatabaseName = "TKBUUDIEN";
-        private static string _username; 
-        private static string _password;
+        private static readonly string _datasourceName = "localhost";
+        private static readonly string _databaseName = "TKBUUDIEN";
 
-        private static string _connectionString = "";
+        public static string ConnectionString { get; set; } = "";
 
-        public static string Username
+        public static string DatasourceName
         {
-            get { return _username; }
-            set { _username = value; }
+            get { return _datasourceName; }
         }
 
-        public static string Password
+        public static string DatabaseName
         {
-            get { return _password; }
-            set { _password = value; }
-        }
-
-        private static string ConnectionString
-        {
-            get { return _connectionString; }
-
-            set
-            {
-                _connectionString = value;
-            }
+            get { return _databaseName; }
         }
 
 
@@ -42,8 +27,6 @@ namespace TestChuyenDe.DAL.connect
             SqlConnection con = null;
             try
             {
-                ConnectionString  = "Data Source=" + DatasourceName + ";Initial Catalog=" + DatabaseName +
-                    ";User ID=" + Username + ";Password=" + Password;
                 con = new SqlConnection(ConnectionString);
                 con.Open();
             }
@@ -67,5 +50,4 @@ namespace TestChuyenDe.DAL.connect
             }
         }
     }
-
 }

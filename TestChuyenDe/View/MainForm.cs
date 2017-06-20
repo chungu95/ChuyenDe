@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraBars;
+using DevExpress.XtraBars.Ribbon;
+using DevExpress.XtraReports.UI;
+using TestChuyenDe.Model;
 
 namespace TestChuyenDe.View
 {
-    public partial class MainForm : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class MainForm : RibbonForm
     {
         public MainForm()
         {
@@ -20,19 +16,15 @@ namespace TestChuyenDe.View
 
         private Form IsExist(Type fType)
         {
-            foreach (Form f in this.MdiChildren)
-            {
+            foreach (var f in MdiChildren)
                 if (f.GetType() == fType)
-                {
                     return f;
-                }
-            }
             return null;
         }
 
         private void btnDichVu_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Form frm = this.IsExist(typeof(TestChuyenDe.View.FrmDichVu));
+            var frm = IsExist(typeof(FrmDichVu));
             if (frm != null)
             {
                 frm.Activate();
@@ -41,7 +33,7 @@ namespace TestChuyenDe.View
             else
             {
                 Console.Write(frm);
-                TestChuyenDe.View.FrmDichVu f = new TestChuyenDe.View.FrmDichVu();
+                var f = new FrmDichVu();
                 f.MdiParent = this;
                 f.Show();
             }
@@ -49,7 +41,7 @@ namespace TestChuyenDe.View
 
         private void btnLaiSuat_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Form frm = this.IsExist(typeof(TestChuyenDe.View.FrmLaiSuat));
+            var frm = IsExist(typeof(FrmLaiSuat));
             if (frm != null)
             {
                 frm.Activate();
@@ -58,7 +50,7 @@ namespace TestChuyenDe.View
             else
             {
                 Console.Write(frm);
-                TestChuyenDe.View.FrmLaiSuat f = new TestChuyenDe.View.FrmLaiSuat();
+                var f = new FrmLaiSuat();
                 f.MdiParent = this;
                 f.Show();
             }
@@ -66,7 +58,7 @@ namespace TestChuyenDe.View
 
         private void btnKhachHang_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Form frm = this.IsExist(typeof(TestChuyenDe.View.FrmKhachHang));
+            var frm = IsExist(typeof(FrmKhachHang));
             if (frm != null)
             {
                 frm.Activate();
@@ -75,7 +67,7 @@ namespace TestChuyenDe.View
             else
             {
                 Console.Write(frm);
-                TestChuyenDe.View.FrmKhachHang f = new TestChuyenDe.View.FrmKhachHang();
+                var f = new FrmKhachHang();
                 f.MdiParent = this;
                 f.Show();
             }
@@ -83,7 +75,7 @@ namespace TestChuyenDe.View
 
         private void btnGiaoDichVien_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Form frm = this.IsExist(typeof(TestChuyenDe.View.FrmGiaoDichVien));
+            var frm = IsExist(typeof(FrmGiaoDichVien));
             if (frm != null)
             {
                 frm.Activate();
@@ -92,7 +84,7 @@ namespace TestChuyenDe.View
             else
             {
                 Console.Write(frm);
-                TestChuyenDe.View.FrmGiaoDichVien f = new TestChuyenDe.View.FrmGiaoDichVien();
+                var f = new FrmGiaoDichVien();
                 f.MdiParent = this;
                 f.Show();
             }
@@ -100,7 +92,7 @@ namespace TestChuyenDe.View
 
         private void btnGuiTien_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Form frm = this.IsExist(typeof(TestChuyenDe.View.FrmGuiTien));
+            var frm = IsExist(typeof(FrmGuiTien));
             if (frm != null)
             {
                 frm.Activate();
@@ -109,7 +101,7 @@ namespace TestChuyenDe.View
             else
             {
                 Console.Write(frm);
-                TestChuyenDe.View.FrmGuiTien f = new TestChuyenDe.View.FrmGuiTien();
+                var f = new FrmGuiTien();
                 f.MdiParent = this;
                 f.Show();
             }
@@ -117,18 +109,73 @@ namespace TestChuyenDe.View
 
         private void btnRutTien_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Form frm = this.IsExist(typeof(TestChuyenDe.View.FrmRutTien));
+            var frm = IsExist(typeof(FrmRutTien));
             if (frm != null)
             {
                 frm.Activate();
                 Console.Write(frm);
             }
             else
-            {Console.Write(frm);
-                TestChuyenDe.View.FrmRutTien f = new TestChuyenDe.View.FrmRutTien();
+            {
+                Console.Write(frm);
+                var f = new FrmRutTien();
                 f.MdiParent = this;
                 f.Show();
             }
         }
+
+        private void btnDanhsachDV_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var report = new Report_LietKeDV();
+            var printtool = new ReportPrintTool(report);
+            printtool.ShowPreview();
+        }
+
+        private void btnXacnhan_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btnPhieuguitientrongkhoangthoigian_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var frm = IsExist(typeof(FrmLietKePhieuGuiTrongKhoangThoiGian));
+            if (frm != null)
+            {
+                frm.Activate();
+                Console.Write(frm);
+            }
+            else
+            {
+                Console.Write(frm);
+                var f = new FrmLietKePhieuGuiTrongKhoangThoiGian();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+        private void ribbon_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void btnAddLogin_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var frm = IsExist(typeof(frmAddLogin));
+            if (frm != null)
+            {
+                frm.Activate();
+                Console.Write(frm);
+            }
+            else
+            {
+                Console.Write(frm);
+                var f = new frmAddLogin();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
     }
 }
