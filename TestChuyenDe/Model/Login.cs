@@ -49,12 +49,7 @@ namespace TestChuyenDe.Model
             SqlDataAdapter data = new SqlDataAdapter(sqlCommand);
             DataTable dataTable = new DataTable();
             data.Fill(dataTable);
-            string _username = dataTable.Rows[0][0].ToString();
-            if (_username.Equals("dbo"))
-            {
-                _username = "Admin";
-            }
-            Login.Username = _username;
+            Login.Username = dataTable.Rows[0][0].ToString();
             Login.Role = dataTable.Rows[0][2].ToString();
         }
 
