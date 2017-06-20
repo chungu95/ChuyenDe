@@ -119,8 +119,11 @@ namespace TestChuyenDe.View
                     }
                     catch (Exception ex)
                     {
+                        MessageBox.Show("Thêm thất bại");
                     }
                     gridView1.RefreshData();
+                    gridView1.EndDataUpdate();
+                    
                 }
             }
         }
