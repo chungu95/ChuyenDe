@@ -57,8 +57,6 @@
             this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.lblUserName = new System.Windows.Forms.Label();
-            this.lblRole = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -80,12 +78,12 @@
             this.btnTongtien,
             this.btnAddLogin});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 15;
+            this.ribbon.MaxItemId = 20;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
             this.ribbonPage2});
-            this.ribbon.Size = new System.Drawing.Size(783, 143);
+            this.ribbon.Size = new System.Drawing.Size(889, 143);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             this.ribbon.Click += new System.EventHandler(this.ribbon_Click);
             // 
@@ -184,6 +182,7 @@
             this.btnAddLogin.Id = 14;
             this.btnAddLogin.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnAddLogin.LargeGlyph")));
             this.btnAddLogin.Name = "btnAddLogin";
+            this.btnAddLogin.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAddLogin_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -276,44 +275,20 @@
             // 
             // ribbonStatusBar
             // 
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 417);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 604);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(783, 31);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(889, 31);
             // 
             // xtraTabbedMdiManager1
             // 
             this.xtraTabbedMdiManager1.MdiParent = this;
             // 
-            // lblUserName
-            // 
-            this.lblUserName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lblUserName.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserName.Location = new System.Drawing.Point(69, 417);
-            this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(160, 31);
-            this.lblUserName.TabIndex = 3;
-            this.lblUserName.Text = "label1";
-            this.lblUserName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblRole
-            // 
-            this.lblRole.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lblRole.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRole.Location = new System.Drawing.Point(235, 417);
-            this.lblRole.Name = "lblRole";
-            this.lblRole.Size = new System.Drawing.Size(178, 29);
-            this.lblRole.TabIndex = 6;
-            this.lblRole.Text = "label1";
-            this.lblRole.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(783, 448);
-            this.Controls.Add(this.lblRole);
-            this.Controls.Add(this.lblUserName);
+            this.ClientSize = new System.Drawing.Size(889, 635);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
             this.IsMdiContainer = true;
@@ -334,7 +309,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbon;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
-        private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
         private DevExpress.XtraBars.BarButtonItem btnDichVu;
         private DevExpress.XtraBars.BarButtonItem btnLaiSuat;
         private DevExpress.XtraBars.BarButtonItem btnKhachHang;
@@ -358,7 +332,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
         private DevExpress.XtraBars.BarButtonItem btnAddLogin;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup11;
-        private System.Windows.Forms.Label lblUserName;
-        private System.Windows.Forms.Label lblRole;
+        private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
     }
 }
