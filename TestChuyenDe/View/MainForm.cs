@@ -158,7 +158,24 @@ namespace TestChuyenDe.View
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            lblUserName.Text = Login.Username;
-            lblRole.Text = "Role: " + Login.Role;
         }
-    }}
+
+        private void btnAddLogin_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var frm = IsExist(typeof(frmAddLogin));
+            if (frm != null)
+            {
+                frm.Activate();
+                Console.Write(frm);
+            }
+            else
+            {
+                Console.Write(frm);
+                var f = new frmAddLogin();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+    }
+}
