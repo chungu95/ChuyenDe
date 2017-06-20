@@ -177,5 +177,27 @@ namespace TestChuyenDe.View
             }
         }
 
+        private void btnPhieuguitienquahanrut_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Report_LietKePhieuGuiDaHetHan report = new Report_LietKePhieuGuiDaHetHan();
+            report.ShowPreview();
+        }
+
+        private void btnTongtien_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var frm = IsExist(typeof(FrmLietKeSoTienTungThangTheoNam));
+            if (frm != null)
+            {
+                frm.Activate();
+                Console.Write(frm);
+            }
+            else
+            {
+                Console.Write(frm);
+                var f = new FrmLietKeSoTienTungThangTheoNam();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
     }
 }

@@ -165,6 +165,7 @@
             this.btnPhieuguitienquahanrut.Id = 9;
             this.btnPhieuguitienquahanrut.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnPhieuguitienquahanrut.LargeGlyph")));
             this.btnPhieuguitienquahanrut.Name = "btnPhieuguitienquahanrut";
+            this.btnPhieuguitienquahanrut.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPhieuguitienquahanrut_ItemClick);
             // 
             // btnTongtien
             // 
@@ -173,6 +174,7 @@
             this.btnTongtien.Id = 10;
             this.btnTongtien.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnTongtien.LargeGlyph")));
             this.btnTongtien.Name = "btnTongtien";
+            this.btnTongtien.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnTongtien_ItemClick);
             // 
             // btnAddLogin
             // 
