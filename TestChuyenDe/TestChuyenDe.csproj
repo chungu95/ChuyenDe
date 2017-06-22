@@ -171,6 +171,9 @@
     <EmbeddedResource Include="View\FrmDichVu.resx">
       <DependentUpon>FrmDichVu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmGuiTien.resx">
+      <DependentUpon>FrmGuiTien.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FrmKhachHang.resx">
       <DependentUpon>FrmKhachHang.cs</DependentUpon>
     </EmbeddedResource>
