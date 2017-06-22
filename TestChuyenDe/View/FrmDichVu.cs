@@ -45,7 +45,7 @@ namespace TestChuyenDe.View
             tbTENDV.Enabled = false;
         }
 
-        private void FrmDichVu_Load(object sender, EventArgs e)
+        private void getdata()
         {
             var con = Connect.GetConnection();
             var sp = "exec SP_DICHVU";
@@ -56,18 +56,21 @@ namespace TestChuyenDe.View
             gridControl1.DataSource = dt;
         }
 
+        private void FrmDichVu_Load(object sender, EventArgs e)
+        {
+            getdata();
+            
+        }
+
         private void gridView1_RowClick(object sender, RowClickEventArgs e)
         {
             if (gridView1.RowCount != 0)
             {
-                currentRow = gridView1.FocusedRowHandle;
-
-
-                tbMADV.Text = (string) gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "MADV");
-
-                tbKYHAN.Text = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "KYHAN").ToString();
-
-                tbTENDV.Text = (string) gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "TENDICHVU");
+                
+                tbMADV.Text = gridView1.GetFocusedDataRow()["MADV"].ToString();
+                tbKYHAN.Text = gridView1.GetFocusedDataRow()["KYHAN"].ToString();
+                tbTENDV.Text = gridView1.GetFocusedDataRow()["TENDICHVU"].ToString();
+               
             }
         }
 
@@ -75,7 +78,6 @@ namespace TestChuyenDe.View
         {
             enableEdit();
             clearEdit();
-
             btnGhi.Text = "Thêm";
             mode = 1;
         }
@@ -116,13 +118,13 @@ namespace TestChuyenDe.View
                     {
                         spCommand.ExecuteNonQuery();
                         MessageBox.Show("Thêm thành công");
+                        getdata();
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Thêm thất bại");
+                       
                     }
-                    gridView1.RefreshData();
-                    gridView1.EndDataUpdate();
+                   
                     
                 }
             }
