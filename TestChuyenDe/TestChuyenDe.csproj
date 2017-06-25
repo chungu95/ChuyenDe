@@ -71,7 +71,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\connect\Connect.cs" />
+    <Compile Include="function\DateConverter.cs" />
+    <Compile Include="function\RandomKey.cs" />
+    <Compile Include="Model\DichVu.cs" />
+    <Compile Include="Model\KhachHang.cs" />
+    <Compile Include="Model\LaiSuat.cs" />
     <Compile Include="Model\Login.cs" />
+    <Compile Include="Model\PhieuGui.cs" />
     <Compile Include="View\frmAddLogin.cs">
       <SubType>Form</SubType>
     </Compile>
