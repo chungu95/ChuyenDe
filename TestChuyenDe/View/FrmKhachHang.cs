@@ -117,7 +117,6 @@ namespace TestChuyenDe.View
 
                     spCommand.CommandText = "SP_THEM_KHACH_HANG";
                     spCommand.CommandType = CommandType.StoredProcedure;
-
                     spCommand.Parameters.AddWithValue("@HOTEN", hoten);
                     spCommand.Parameters.AddWithValue("@DIACHI", diachi);
                     spCommand.Parameters.AddWithValue("@CMND", cmnd);
