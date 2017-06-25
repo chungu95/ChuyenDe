@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -78,12 +78,23 @@
     <Compile Include="Model\LaiSuat.cs" />
     <Compile Include="Model\Login.cs" />
     <Compile Include="Model\PhieuGui.cs" />
-    <Compile Include="Model\PhieuRut.cs" />
     <Compile Include="View\frmAddLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\frmAddLogin.Designer.cs">
       <DependentUpon>frmAddLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmBackup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmBackup.Designer.cs">
+      <DependentUpon>FrmBackup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmBackup2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmBackup2.Designer.cs">
+      <DependentUpon>FrmBackup2.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FrmDichVu.cs">
       <SubType>Form</SubType>
@@ -135,6 +146,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\FrmRestore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmRestore.Designer.cs">
+      <DependentUpon>FrmRestore.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FrmRutTien.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +192,12 @@
     <EmbeddedResource Include="View\frmAddLogin.resx">
       <DependentUpon>frmAddLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmBackup.resx">
+      <DependentUpon>FrmBackup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmBackup2.resx">
+      <DependentUpon>FrmBackup2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FrmDichVu.resx">
       <DependentUpon>FrmDichVu.cs</DependentUpon>
     </EmbeddedResource>
@@ -205,6 +228,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\FrmRestore.resx">
+      <DependentUpon>FrmRestore.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
