@@ -14,6 +14,7 @@ namespace TestChuyenDe.Model
         private string _madv;
         private Decimal _soTienGui;
         private DateTime _ngayDenHan;
+        private DateTime _ngayGui;
 
         public string MaPhieu
         {
@@ -43,6 +44,12 @@ namespace TestChuyenDe.Model
         {
             get { return _ngayDenHan; }
             set { _ngayDenHan = value; }
+        }
+
+        public DateTime NgayGui
+        {
+            get { return _ngayGui; }
+            set { _ngayGui = value; }
         }
 
         public static bool LuuPhieuGui(PhieuGui phieugui, string loginName)
