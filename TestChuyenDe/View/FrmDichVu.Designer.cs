@@ -38,15 +38,15 @@
             this.lbKYHAN = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.bar2 = new DevExpress.XtraBars.Bar();
+            this.btnThemDV = new DevExpress.XtraBars.BarButtonItem();
+            this.btnXoaDV = new DevExpress.XtraBars.BarButtonItem();
+            this.btnSửa = new DevExpress.XtraBars.BarButtonItem();
+            this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.bar2 = new DevExpress.XtraBars.Bar();
-            this.bar3 = new DevExpress.XtraBars.Bar();
-            this.btnThemDV = new DevExpress.XtraBars.BarButtonItem();
-            this.btnXoaDV = new DevExpress.XtraBars.BarButtonItem();
-            this.btnSửa = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.btnGhi = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -139,6 +139,53 @@
             this.barManager1.MaxItemId = 4;
             this.barManager1.StatusBar = this.bar3;
             // 
+            // bar2
+            // 
+            this.bar2.BarName = "Main menu";
+            this.bar2.DockCol = 0;
+            this.bar2.DockRow = 0;
+            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.btnThemDV, false),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.btnXoaDV, false),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnSửa)});
+            this.bar2.OptionsBar.MultiLine = true;
+            this.bar2.OptionsBar.UseWholeRow = true;
+            this.bar2.Text = "Main menu";
+            // 
+            // btnThemDV
+            // 
+            this.btnThemDV.Caption = "Thêm";
+            this.btnThemDV.Id = 0;
+            this.btnThemDV.Name = "btnThemDV";
+            this.btnThemDV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThemDV_ItemClick);
+            // 
+            // btnXoaDV
+            // 
+            this.btnXoaDV.Caption = "Xóa";
+            this.btnXoaDV.Id = 1;
+            this.btnXoaDV.Name = "btnXoaDV";
+            this.btnXoaDV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnXoaDV_ItemClick);
+            // 
+            // btnSửa
+            // 
+            this.btnSửa.Caption = "Sửa";
+            this.btnSửa.Id = 2;
+            this.btnSửa.Name = "btnSửa";
+            this.btnSửa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSửa_ItemClick);
+            // 
+            // bar3
+            // 
+            this.bar3.BarName = "Status bar";
+            this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
+            this.bar3.DockCol = 0;
+            this.bar3.DockRow = 0;
+            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
+            this.bar3.OptionsBar.AllowQuickCustomization = false;
+            this.bar3.OptionsBar.DrawDragBorder = false;
+            this.bar3.OptionsBar.UseWholeRow = true;
+            this.bar3.Text = "Status bar";
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
@@ -166,51 +213,6 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(584, 22);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 392);
-            // 
-            // bar2
-            // 
-            this.bar2.BarName = "Main menu";
-            this.bar2.DockCol = 0;
-            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnThemDV),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnXoaDV),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnSửa)});
-            this.bar2.OptionsBar.MultiLine = true;
-            this.bar2.OptionsBar.UseWholeRow = true;
-            this.bar2.Text = "Main menu";
-            // 
-            // bar3
-            // 
-            this.bar3.BarName = "Status bar";
-            this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
-            this.bar3.DockCol = 0;
-            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
-            this.bar3.OptionsBar.AllowQuickCustomization = false;
-            this.bar3.OptionsBar.DrawDragBorder = false;
-            this.bar3.OptionsBar.UseWholeRow = true;
-            this.bar3.Text = "Status bar";
-            // 
-            // btnThemDV
-            // 
-            this.btnThemDV.Caption = "Thêm";
-            this.btnThemDV.Id = 0;
-            this.btnThemDV.Name = "btnThemDV";
-            this.btnThemDV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThemDV_ItemClick);
-            // 
-            // btnXoaDV
-            // 
-            this.btnXoaDV.Caption = "Xóa";
-            this.btnXoaDV.Id = 1;
-            this.btnXoaDV.Name = "btnXoaDV";
-            this.btnXoaDV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnXoaDV_ItemClick);
-            // 
-            // btnSửa
-            // 
-            this.btnSửa.Caption = "Sửa";
-            this.btnSửa.Id = 2;
-            this.btnSửa.Name = "btnSửa";
-            this.btnSửa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSửa_ItemClick);
             // 
             // barButtonItem1
             // 

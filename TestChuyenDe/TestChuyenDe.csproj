@@ -71,7 +71,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\connect\Connect.cs" />
+    <Compile Include="function\DateConverter.cs" />
+    <Compile Include="function\RandomKey.cs" />
+    <Compile Include="Model\DichVu.cs" />
+    <Compile Include="Model\KhachHang.cs" />
+    <Compile Include="Model\LaiSuat.cs" />
     <Compile Include="Model\Login.cs" />
+    <Compile Include="Model\PhieuGui.cs" />
     <Compile Include="View\frmAddLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +120,12 @@
     <Compile Include="View\FrmLietKePhieuGuiTrongKhoangThoiGian.Designer.cs">
       <DependentUpon>FrmLietKePhieuGuiTrongKhoangThoiGian.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\FrmLietKeSoTienTungThangTheoNam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmLietKeSoTienTungThangTheoNam.Designer.cs">
+      <DependentUpon>FrmLietKeSoTienTungThangTheoNam.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,17 +152,23 @@
     <Compile Include="View\Report_LietKeDV.Designer.cs">
       <DependentUpon>Report_LietKeDV.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Report_LKPhieuGuiTheoThoiGian.cs">
+    <Compile Include="View\Report_LietKePhieuGuiDaHetHan.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="View\Report_LKPhieuGuiTheoThoiGian.Designer.cs">
-      <DependentUpon>Report_LKPhieuGuiTheoThoiGian.cs</DependentUpon>
+    <Compile Include="View\Report_LietKePhieuGuiDaHetHan.Designer.cs">
+      <DependentUpon>Report_LietKePhieuGuiDaHetHan.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\XtraReport1.cs">
+    <Compile Include="View\Report_LietKePhieuGuiTheoNam.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="View\XtraReport1.Designer.cs">
-      <DependentUpon>XtraReport1.cs</DependentUpon>
+    <Compile Include="View\Report_LietKePhieuGuiTheoNam.Designer.cs">
+      <DependentUpon>Report_LietKePhieuGuiTheoNam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Report_LietKePhieuGuiTrongKhoangThoiGian.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Report_LietKePhieuGuiTrongKhoangThoiGian.Designer.cs">
+      <DependentUpon>Report_LietKePhieuGuiTrongKhoangThoiGian.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="View\frmAddLogin.resx">
@@ -159,8 +177,20 @@
     <EmbeddedResource Include="View\FrmDichVu.resx">
       <DependentUpon>FrmDichVu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmGuiTien.resx">
+      <DependentUpon>FrmGuiTien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmKhachHang.resx">
+      <DependentUpon>FrmKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmLaiSuat.resx">
+      <DependentUpon>FrmLaiSuat.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FrmLietKePhieuGuiTrongKhoangThoiGian.resx">
       <DependentUpon>FrmLietKePhieuGuiTrongKhoangThoiGian.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmLietKeSoTienTungThangTheoNam.resx">
+      <DependentUpon>FrmLietKeSoTienTungThangTheoNam.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
@@ -180,11 +210,14 @@
     <EmbeddedResource Include="View\Report_LietKeDV.resx">
       <DependentUpon>Report_LietKeDV.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Report_LKPhieuGuiTheoThoiGian.resx">
-      <DependentUpon>Report_LKPhieuGuiTheoThoiGian.cs</DependentUpon>
+    <EmbeddedResource Include="View\Report_LietKePhieuGuiDaHetHan.resx">
+      <DependentUpon>Report_LietKePhieuGuiDaHetHan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\XtraReport1.resx">
-      <DependentUpon>XtraReport1.cs</DependentUpon>
+    <EmbeddedResource Include="View\Report_LietKePhieuGuiTheoNam.resx">
+      <DependentUpon>Report_LietKePhieuGuiTheoNam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Report_LietKePhieuGuiTrongKhoangThoiGian.resx">
+      <DependentUpon>Report_LietKePhieuGuiTrongKhoangThoiGian.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
