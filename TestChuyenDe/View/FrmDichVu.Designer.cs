@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.tbMADV = new System.Windows.Forms.TextBox();
             this.tbKYHAN = new System.Windows.Forms.TextBox();
             this.tbTENDV = new System.Windows.Forms.TextBox();
@@ -49,13 +49,17 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.btnGhi = new System.Windows.Forms.Button();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControl1
             // 
+            gridLevelNode1.RelationName = "Level1";
+            this.gridControl1.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode1});
             this.gridControl1.Location = new System.Drawing.Point(0, 26);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
@@ -64,13 +68,6 @@
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             this.gridControl1.Click += new System.EventHandler(this.gridControl1_Click);
-            // 
-            // gridView1
-            // 
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.Editable = false;
-            this.gridView1.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView1_RowClick);
             // 
             // tbMADV
             // 
@@ -228,6 +225,13 @@
             this.btnGhi.UseVisualStyleBackColor = true;
             this.btnGhi.Click += new System.EventHandler(this.btnGhi_Click);
             // 
+            // gridView1
+            // 
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView1_RowClick);
+            // 
             // FrmDichVu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -249,8 +253,8 @@
             this.Text = "FrmDichVu";
             this.Load += new System.EventHandler(this.FrmDichVu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -259,7 +263,6 @@
         #endregion
 
         private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private System.Windows.Forms.TextBox tbMADV;
         private System.Windows.Forms.TextBox tbKYHAN;
         private System.Windows.Forms.TextBox tbTENDV;
@@ -278,5 +281,6 @@
         private DevExpress.XtraBars.BarButtonItem btnSửa;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private System.Windows.Forms.Button btnGhi;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
     }
 }
