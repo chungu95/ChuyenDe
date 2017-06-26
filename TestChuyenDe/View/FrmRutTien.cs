@@ -141,7 +141,7 @@ namespace TestChuyenDe.View
                 phieurut.MaPhieuGui = cbbMaPhieuGui.SelectedValue.ToString();
                 try
                 {
-                    phieurut.SoTienRut = Decimal.Parse(txtSoTienRut.Text);
+                    phieurut.SoTienRut = Decimal.Parse(txtSoTienRut.Text, System.Globalization.NumberStyles.Float);
                 }
                 catch (Exception)
                 {

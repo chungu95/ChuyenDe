@@ -78,6 +78,7 @@
     <Compile Include="Model\LaiSuat.cs" />
     <Compile Include="Model\Login.cs" />
     <Compile Include="Model\PhieuGui.cs" />
+    <Compile Include="Model\PhieuRut.cs" />
     <Compile Include="View\frmAddLogin.cs">
       <SubType>Form</SubType>
     </Compile>
