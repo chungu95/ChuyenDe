@@ -78,6 +78,7 @@
     <Compile Include="Model\LaiSuat.cs" />
     <Compile Include="Model\Login.cs" />
     <Compile Include="Model\PhieuGui.cs" />
+    <Compile Include="Model\PhieuRut.cs" />
     <Compile Include="View\frmAddLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,6 +231,9 @@
     </Compile>
     <EmbeddedResource Include="View\FrmRestore.resx">
       <DependentUpon>FrmRestore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmRutTien.resx">
+      <DependentUpon>FrmRutTien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

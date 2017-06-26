@@ -104,7 +104,11 @@ namespace TestChuyenDe.View
         {
             MessageBox.Show(position);
             SqlConnection con = Connect.GetConnection();
-            string sql = "ALTER DATABASE TKBUUDIEN SET SINGLE_USER WITH ROLLBACK IMMEDIATE  " + "USE tempdb " + "RESTORE DATABASE TKBUUDIEN FROM DEVICE_TKBUUDIEN  WITH FILE= " + position + ", REPLACE  " + "ALTER DATABASE TKBUUDIEN  SET MULTI_USER ";
+            string sql = "ALTER DATABASE TKBUUDIEN SET SINGLE_USER WITH ROLLBACK IMMEDIATE  " 
+                + "USE tempdb " 
+                + "RESTORE DATABASE TKBUUDIEN FROM DEVICE_TKBUUDIEN  WITH FILE= "
+                + position + ", REPLACE  " 
+                + "ALTER DATABASE TKBUUDIEN  SET MULTI_USER ";
             SqlCommand command = new SqlCommand(sql, con);
             try
             {

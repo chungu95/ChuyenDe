@@ -89,7 +89,14 @@ namespace TestChuyenDe.View
                 lblTenDichVu.Text = dichvu.Tendv;
                 lblKyHan.Text = dichvu.Kyhan.ToString();
                 lblLaiSuat.Text = dichvu.LaiSuat.Laisuat.ToString(CultureInfo.InvariantCulture);
-                txtNgayDenHan.Text = DateConverter.LayNgayDenHan(dichvu.Kyhan).ToString(CultureInfo.InvariantCulture);
+                if (dichvu.Kyhan == 0)
+                {
+                    txtNgayDenHan.Text = DateTime.MaxValue.ToString(); 
+                }
+                else
+                {
+                    txtNgayDenHan.Text = DateConverter.LayNgayDenHan(dichvu.Kyhan).ToString(CultureInfo.InvariantCulture);
+                }
             }
         }
         private void LoadAllDv()
@@ -126,6 +133,10 @@ namespace TestChuyenDe.View
 
         private void btnLuuPhieu_Click(object sender, EventArgs e)
         {
+            if (txtSoTienGui.Text.Equals(""))
+            {
+                MessageBox.Show("Vui lòng nhập số tiền");
+            }
             if (Decimal.Parse(txtSoTienGui.Text) < 100000)
             {
                 MessageBox.Show("Số tiền gửi phải lớn hơn hoặc bằng 100.000");
