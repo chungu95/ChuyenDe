@@ -18,7 +18,7 @@ namespace TestChuyenDe.View
         }
         private void cbbCMND_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-            LoadDsPhieuGui(cbbCMND.SelectedValue.ToString());
+            RefreshTTPGComponents();LoadDsPhieuGui(cbbCMND.SelectedValue.ToString());
             LoadThongTinKhachHang(cbbCMND.SelectedValue.ToString());
         }
 
@@ -58,9 +58,7 @@ namespace TestChuyenDe.View
                     cbbCMND.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
                     cbbCMND.AutoCompleteSource = AutoCompleteSource.CustomSource;
                 }
-        }
-
-        private void LoadThongTinKhachHang(string cmnd)
+        }private void LoadThongTinKhachHang(string cmnd)
         {
             KhachHang khachhang = KhachHang.GetDsKhachHang(cmnd);
             if (khachhang != null)
@@ -112,26 +110,56 @@ namespace TestChuyenDe.View
         }
         private void btnTinhLai_Click(object sender, EventArgs e)
         {
-            PhieuGui phieugui = PhieuGui.GetPhieuGui(cbbMaPhieuGui.SelectedValue.ToString());
-            txtTienLai.Text = PhieuRut.TinhTienLai(phieugui, 0).ToString();
-            btnLuuPhieu.Enabled = true;
-        }
-        private void btnLuuPhieu_Click(object sender, EventArgs e)
-        {
-            PhieuRut phieurut = new PhieuRut();
-            phieurut.MaPhieuGui = cbbMaPhieuGui.SelectedValue.ToString();
-            phieurut.SoTienRut = Decimal.Parse(txtSoTienRut.Text);
-            phieurut.TienLai = Decimal.Parse(txtTienLai.Text);
-            if (PhieuRut.LuuPhieuRut(phieurut, Login.LgName))
+            if (txtSoTienRut.Text.Trim().Equals(""))
             {
-                MessageBox.Show("Lập phiếu rút thành công");
-                RefreshTTPGComponents();
+                MessageBox.Show("Vui lòng nhập số tiền rút");
             }
             else
             {
-                MessageBox.Show("Lập phiếu thất bại");}
+                PhieuGui phieugui = PhieuGui.GetPhieuGui(cbbMaPhieuGui.SelectedValue.ToString());
+                txtTienLai.Text = PhieuRut.TinhTienLai(phieugui, 0).ToString();
+                try
+                {
+                    txtTongTien.Text = (Decimal.Parse(txtSoTienRut.Text) + Decimal.Parse(txtTienLai.Text)).ToString();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("vui lòng nhập số");
+                }
+                btnLuuPhieu.Enabled = true;
+            }
         }
-
+        private void btnLuuPhieu_Click(object sender, EventArgs e)
+        {
+            if (txtSoTienRut.Text.Trim().Equals(""))
+            {
+                MessageBox.Show("Vui lòng nhập số tiền rút");
+            }
+            else
+            {
+                PhieuRut phieurut = new PhieuRut();
+                phieurut.MaPhieuGui = cbbMaPhieuGui.SelectedValue.ToString();
+                try
+                {
+                    phieurut.SoTienRut = Decimal.Parse(txtSoTienRut.Text);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Vui lòng nhập số!");
+                    return;
+                }
+                phieurut.TienLai = Decimal.Parse(txtTienLai.Text);
+                if (PhieuRut.LuuPhieuRut(phieurut, Login.LgName))
+                {
+                    MessageBox.Show("Lập phiếu rút thành công");
+                    RefreshTTPGComponents();
+                }
+                else
+                {
+                    MessageBox.Show("Lập phiếu thất bại");
+                }
+            }
+        }
         private void RefreshTTPGComponents()
         {
             txtDichVu.Text = "";
@@ -145,5 +173,4 @@ namespace TestChuyenDe.View
             btnLuuPhieu.Enabled = false;
         }
     }
-
 }

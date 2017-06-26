@@ -83,17 +83,15 @@ namespace TestChuyenDe.Model
         }
         private static Decimal LaiRutTruocHan(PhieuGui phieugui)
         {
-            MessageBox.Show("Trước hạn");Decimal tienlai = 0;
-            float laisuat = LaiSuat.LayLaiSuat("40").Laisuat;
-            DateTime currentDate = DateTime.Today;
+            Decimal tienlai = 0;
+            float laisuat = LaiSuat.LayLaiSuat("40").Laisuat;DateTime currentDate = DateTime.Today;
             TimeSpan time = currentDate - phieugui.NgayGui;
-            float songay = time.Days;
-            MessageBox.Show(songay.ToString());
-            float sotiengui = float.Parse(phieugui.SoTienGui.ToString());
+            float songay = time.Days;float sotiengui = float.Parse(phieugui.SoTienGui.ToString());
             tienlai = Decimal.Parse((sotiengui * (songay / 365) * laisuat).ToString(), System.Globalization.NumberStyles.Float);
             return tienlai;}
         private static Decimal LaiRutDungHan(PhieuGui phieugui)
-        {Decimal tienlai = 0;
+        {
+            Decimal tienlai = 0;
             DichVu dichvu = DichVu.GetDichVuByMaDv(phieugui.Madv);
             float laisuat = phieugui.Laisuat;
             float sotiengui = float.Parse(phieugui.SoTienGui.ToString());
@@ -101,16 +99,18 @@ namespace TestChuyenDe.Model
             return tienlai;
         }
         private static Decimal LaiRutQuaHan(PhieuGui phieugui){
-            Decimal tienlai = 0;
-            do
+            Decimal tienlai = 0;while (phieugui.NgayGui <= DateTime.Today)
             {
-                tienlai += LaiRutDungHan(phieugui);
+                MessageBox.Show("lặp");tienlai += LaiRutDungHan(phieugui);
                 phieugui.SoTienGui += LaiRutDungHan(phieugui);
                 phieugui.NgayGui = phieugui.NgayGui.AddMonths(phieugui.Dichvu.Kyhan);
-            } while (phieugui.NgayGui < DateTime.Today);
-            if (phieugui.NgayGui.AddMonths(-phieugui.Dichvu.Kyhan) < DateTime.Today)
-            {
-                phieugui.NgayGui = phieugui.NgayGui.AddMonths(-phieugui.Dichvu.Kyhan);
+                if ((phieugui.NgayGui == DateTime.Today))
+                {
+                    break;
+                }
+            } 
+            if (phieugui.NgayGui.AddMonths(phieugui.Dichvu.Kyhan) < DateTime.Today)
+            {phieugui.NgayGui = phieugui.NgayGui.AddMonths(-phieugui.Dichvu.Kyhan);
                 tienlai += LaiRutTruocHan(phieugui);
             }
             return tienlai;
