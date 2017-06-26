@@ -18,7 +18,7 @@ namespace TestChuyenDe.View
     public partial class FrmBackup2 : DevExpress.XtraEditors.XtraForm
     {
         string date;
-        string position;
+        string position="0";
         public FrmBackup2()
         {
             InitializeComponent();
@@ -37,7 +37,7 @@ namespace TestChuyenDe.View
         {
 
             getdata();
-
+            
 
         }
 
@@ -67,6 +67,7 @@ namespace TestChuyenDe.View
                 }
                 catch (Exception ex)
                 {
+                    MessageBox.Show("Backup thất bại");
                     MessageBox.Show(ex.Message);
                 }
 
@@ -86,7 +87,9 @@ namespace TestChuyenDe.View
 
         private void gridView1_RowClick(object sender, RowClickEventArgs e)
         {
+            
             position=gridView1.GetFocusedDataRow()["position"].ToString();
+            
             
         }
 
@@ -102,23 +105,33 @@ namespace TestChuyenDe.View
 
         private void btnrestore_Click_1(object sender, EventArgs e)
         {
-            MessageBox.Show(position);
-            SqlConnection con = Connect.GetConnection();
-            string sql = "ALTER DATABASE TKBUUDIEN SET SINGLE_USER WITH ROLLBACK IMMEDIATE  " 
-                + "USE tempdb " 
-                + "RESTORE DATABASE TKBUUDIEN FROM DEVICE_TKBUUDIEN  WITH FILE= "
-                + position + ", REPLACE  " 
-                + "ALTER DATABASE TKBUUDIEN  SET MULTI_USER ";
-            SqlCommand command = new SqlCommand(sql, con);
-            try
+
+            if( position.Equals("0"))
             {
-                command.ExecuteNonQuery();
-                MessageBox.Show("restore thành công");
+                MessageBox.Show("bạn chưa chọn file để restore");
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                SqlConnection con = Connect.GetConnection();
+                string sql = "ALTER DATABASE TKBUUDIEN SET SINGLE_USER WITH ROLLBACK IMMEDIATE  " + "USE tempdb " + "RESTORE DATABASE TKBUUDIEN FROM DEVICE_TKBUUDIEN  WITH FILE= " + position + ", REPLACE  " + "ALTER DATABASE TKBUUDIEN  SET MULTI_USER ";
+                SqlCommand command = new SqlCommand(sql, con);
+                try
+                {
+                    command.ExecuteNonQuery();
+                    MessageBox.Show("restore thành công");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
+           
+        }
+
+        private void btnthoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
         }
     }
 

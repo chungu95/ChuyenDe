@@ -126,7 +126,7 @@ namespace TestChuyenDe.View
 
         private void btnDanhsachDV_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var report = new Report_LietKeDV();
+            var report = new Report_LietKeDichVuHienHanh();
             var printtool = new ReportPrintTool(report);
             printtool.ShowPreview();
         }
@@ -195,6 +195,23 @@ namespace TestChuyenDe.View
             {
                 Console.Write(frm);
                 var f = new FrmLietKeSoTienTungThangTheoNam();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void btnBackupRestore_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var frm = IsExist(typeof(FrmBackup2));
+            if (frm != null)
+            {
+                frm.Activate();
+                Console.Write(frm);
+            }
+            else
+            {
+                Console.Write(frm);
+                var f = new FrmBackup2();
                 f.MdiParent = this;
                 f.Show();
             }

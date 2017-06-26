@@ -37,6 +37,7 @@
             this.btnbackup = new System.Windows.Forms.Button();
             this.cbreset = new System.Windows.Forms.CheckBox();
             this.btnrestore = new System.Windows.Forms.Button();
+            this.btnthoat = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
@@ -73,6 +74,7 @@
             this.check.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.check.FieldName = "position";
             this.check.Name = "check";
+            this.check.OptionsColumn.AllowEdit = false;
             this.check.Visible = true;
             this.check.VisibleIndex = 0;
             // 
@@ -124,11 +126,22 @@
             this.btnrestore.UseVisualStyleBackColor = true;
             this.btnrestore.Click += new System.EventHandler(this.btnrestore_Click_1);
             // 
+            // btnthoat
+            // 
+            this.btnthoat.Location = new System.Drawing.Point(29, 266);
+            this.btnthoat.Name = "btnthoat";
+            this.btnthoat.Size = new System.Drawing.Size(75, 23);
+            this.btnthoat.TabIndex = 4;
+            this.btnthoat.Text = "THOÁT";
+            this.btnthoat.UseVisualStyleBackColor = true;
+            this.btnthoat.Click += new System.EventHandler(this.btnthoat_Click);
+            // 
             // FrmBackup2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(599, 383);
+            this.Controls.Add(this.btnthoat);
             this.Controls.Add(this.btnrestore);
             this.Controls.Add(this.cbreset);
             this.Controls.Add(this.btnbackup);
@@ -154,5 +167,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
         private System.Windows.Forms.CheckBox cbreset;
         private System.Windows.Forms.Button btnrestore;
+        private System.Windows.Forms.Button btnthoat;
     }
 }

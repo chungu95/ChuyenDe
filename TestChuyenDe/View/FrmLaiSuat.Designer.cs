@@ -94,7 +94,6 @@
             // 
             // dtngayad
             // 
-            this.dtngayad.Enabled = false;
             this.dtngayad.Location = new System.Drawing.Point(123, 150);
             this.dtngayad.Name = "dtngayad";
             this.dtngayad.Size = new System.Drawing.Size(200, 21);

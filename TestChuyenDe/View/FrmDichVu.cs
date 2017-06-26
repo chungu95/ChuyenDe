@@ -122,12 +122,17 @@ namespace TestChuyenDe.View
                     }
                     catch (Exception ex)
                     {
-                       
+                        MessageBox.Show(ex.Message);
                     }
                    
                     
                 }
             }
+        }
+
+        private void btnthoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -42,6 +42,7 @@
             this.btnPhieuguitienquahanrut = new DevExpress.XtraBars.BarButtonItem();
             this.btnTongtien = new DevExpress.XtraBars.BarButtonItem();
             this.btnAddLogin = new DevExpress.XtraBars.BarButtonItem();
+            this.btnBackupRestore = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -55,6 +56,8 @@
             this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
@@ -76,13 +79,15 @@
             this.btnPhieuguitientrongkhoangthoigian,
             this.btnPhieuguitienquahanrut,
             this.btnTongtien,
-            this.btnAddLogin});
+            this.btnAddLogin,
+            this.btnBackupRestore});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 20;
+            this.ribbon.MaxItemId = 21;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
-            this.ribbonPage2});
+            this.ribbonPage2,
+            this.ribbonPage3});
             this.ribbon.Size = new System.Drawing.Size(889, 143);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             this.ribbon.Click += new System.EventHandler(this.ribbon_Click);
@@ -186,6 +191,15 @@
             this.btnAddLogin.Name = "btnAddLogin";
             this.btnAddLogin.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAddLogin_ItemClick);
             // 
+            // btnBackupRestore
+            // 
+            this.btnBackupRestore.Caption = "Backup - Restore";
+            this.btnBackupRestore.Glyph = ((System.Drawing.Image)(resources.GetObject("btnBackupRestore.Glyph")));
+            this.btnBackupRestore.Id = 20;
+            this.btnBackupRestore.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnBackupRestore.LargeGlyph")));
+            this.btnBackupRestore.Name = "btnBackupRestore";
+            this.btnBackupRestore.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBackupRestore_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -275,6 +289,19 @@
             this.ribbonPageGroup10.Name = "ribbonPageGroup10";
             this.ribbonPageGroup10.Text = "ribbonPageGroup10";
             // 
+            // ribbonPage3
+            // 
+            this.ribbonPage3.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup12});
+            this.ribbonPage3.Name = "ribbonPage3";
+            this.ribbonPage3.Text = "HỆ THỐNG";
+            // 
+            // ribbonPageGroup12
+            // 
+            this.ribbonPageGroup12.ItemLinks.Add(this.btnBackupRestore);
+            this.ribbonPageGroup12.Name = "ribbonPageGroup12";
+            this.ribbonPageGroup12.Text = "Backup - Restore";
+            // 
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 604);
@@ -335,5 +362,8 @@
         private DevExpress.XtraBars.BarButtonItem btnAddLogin;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup11;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
+        private DevExpress.XtraBars.BarButtonItem btnBackupRestore;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage3;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup12;
     }
 }

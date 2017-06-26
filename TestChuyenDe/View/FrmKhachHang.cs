@@ -104,13 +104,23 @@ namespace TestChuyenDe.View
 
         private void btnghi_Click(object sender, EventArgs e)
         {
+            var hoten = txthoten.Text;
+            var diachi = txtdiachi.Text;
+            string cmnd = txtcmnd.Text;
+            int cmndso = 0;
+            var Ngaycap = ngaycap.Value.ToString("yyyy-MM-dd");
             var con = Connect.GetConnection();
+
+            try {
+                cmndso = int.Parse(cmnd);
+                
+            } catch (Exception ex) {
+                MessageBox.Show("CMND phải là 1 chữ số");
+                return;
+            }
             if (mode == 1)//them
             {
-                var hoten = txthoten.Text;
-                var diachi = txtdiachi.Text;
-                var cmnd = txtcmnd.Text;
-                var Ngaycap = ngaycap.Value.ToString("yyyy-MM-dd");
+               
 
                 using (var spCommand = con.CreateCommand())
                 {
@@ -136,10 +146,7 @@ namespace TestChuyenDe.View
                 }
             else if (mode == 2)//sua
             {
-                var hoten = txthoten.Text;
-                var diachi = txtdiachi.Text;
-                var cmnd = txtcmnd.Text;
-                var Ngaycap = ngaycap.Value.ToString("yyyy-MM-dd");
+               
                 using (var spCommand = con.CreateCommand())
                 {
                     spCommand.CommandText = "SP_SUA_KHACH_HANG";
@@ -165,7 +172,7 @@ namespace TestChuyenDe.View
 
             else if(mode == 3)//xoa
             {
-                var cmnd = txtcmnd.Text;
+               
                 using (var spcommand = con.CreateCommand())
                 {
                     spcommand.CommandText = "SP_XoaKhachHang";
