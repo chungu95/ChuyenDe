@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -78,7 +78,6 @@
     <Compile Include="Model\LaiSuat.cs" />
     <Compile Include="Model\Login.cs" />
     <Compile Include="Model\PhieuGui.cs" />
-    <Compile Include="Model\PhieuRut.cs" />
     <Compile Include="View\frmAddLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,12 +158,6 @@
     <Compile Include="View\Report_LietKeDichVuHienHanh.Designer.cs">
       <DependentUpon>Report_LietKeDichVuHienHanh.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Report_LietKeDV.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="View\Report_LietKeDV.Designer.cs">
-      <DependentUpon>Report_LietKeDV.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\Report_LietKePhieuGuiDaHetHan.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -223,23 +216,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-<<<<<<< HEAD
-    <EmbeddedResource Include="View\FrmRestore.resx">
-      <DependentUpon>FrmRestore.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\FrmRutTien.resx">
-      <DependentUpon>FrmRutTien.cs</DependentUpon>
-    </EmbeddedResource>
-=======
->>>>>>> rang code
     <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Report_LietKeDichVuHienHanh.resx">
       <DependentUpon>Report_LietKeDichVuHienHanh.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Report_LietKeDV.resx">
-      <DependentUpon>Report_LietKeDV.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Report_LietKePhieuGuiDaHetHan.resx">
       <DependentUpon>Report_LietKePhieuGuiDaHetHan.cs</DependentUpon>
