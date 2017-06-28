@@ -11,9 +11,18 @@ namespace TestChuyenDe.View
     {
         public MainForm()
         {
-            InitializeComponent();
+            InitializeComponent();LoadComponents();
         }
 
+        public void LoadComponents()
+        {
+            if(Login.Role.Equals("GDV")){
+                btnBackupRestore.Enabled = false;
+                btnAddLogin.Enabled = false;
+                btnGiaoDichVien.Enabled = false;
+            }
+        }
+        
         private Form IsExist(Type fType)
         {
             foreach (var f in MdiChildren)

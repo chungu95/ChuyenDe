@@ -128,7 +128,6 @@ namespace TestChuyenDe.Model
             }
             return phieugui;
         }
-
         public static DataTable PhieuGuiByCmnd(string cmnd)
         {
             DataTable dt = null;

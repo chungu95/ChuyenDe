@@ -25,8 +25,8 @@ namespace TestChuyenDe
             var con = Connect.GetConnection();
             if (con != null && con.State == ConnectionState.Open)
             {
-                Form form = new MainForm();Hide();
                 Login.doLogin();
+                Form form = new MainForm();Hide();
                 form.Show();
             }
             else

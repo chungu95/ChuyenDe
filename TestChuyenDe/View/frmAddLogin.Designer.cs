@@ -34,13 +34,14 @@
             this.lblLoginName = new System.Windows.Forms.Label();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.lblPassword = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPass = new System.Windows.Forms.TextBox();
             this.btnAddUser = new System.Windows.Forms.Button();
             this.btnXoaUser = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
             this.rbAdmin = new System.Windows.Forms.RadioButton();
             this.rbGDV = new System.Windows.Forms.RadioButton();
             this.lblNhom = new System.Windows.Forms.Label();
+            this.lblThongBao = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblTieuDe
@@ -63,18 +64,15 @@
             this.lblHoten.Size = new System.Drawing.Size(145, 14);
             this.lblHoten.TabIndex = 1;
             this.lblHoten.Text = "Họ tên giao dịch viên: ";
-            this.lblHoten.Visible = false;
             // 
             // cbbGiaoDichVien
             // 
-            this.cbbGiaoDichVien.Enabled = false;
             this.cbbGiaoDichVien.FormattingEnabled = true;
             this.cbbGiaoDichVien.Location = new System.Drawing.Point(403, 94);
             this.cbbGiaoDichVien.Name = "cbbGiaoDichVien";
             this.cbbGiaoDichVien.Size = new System.Drawing.Size(209, 21);
             this.cbbGiaoDichVien.TabIndex = 2;
-            this.cbbGiaoDichVien.Visible = false;
-            this.cbbGiaoDichVien.SelectedIndexChanged += new System.EventHandler(this.cbbGiaoDichVien_SelectedIndexChanged);
+            this.cbbGiaoDichVien.SelectionChangeCommitted += new System.EventHandler(this.cbbGiaoDichVien_SelectionChangeCommitted);
             // 
             // lblLoginName
             // 
@@ -103,12 +101,12 @@
             this.lblPassword.TabIndex = 5;
             this.lblPassword.Text = "Password:";
             // 
-            // textBox1
+            // txtPass
             // 
-            this.textBox1.Location = new System.Drawing.Point(403, 199);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(135, 21);
-            this.textBox1.TabIndex = 6;
+            this.txtPass.Location = new System.Drawing.Point(403, 199);
+            this.txtPass.Name = "txtPass";
+            this.txtPass.Size = new System.Drawing.Size(135, 21);
+            this.txtPass.TabIndex = 6;
             // 
             // btnAddUser
             // 
@@ -120,6 +118,7 @@
             this.btnAddUser.TabIndex = 7;
             this.btnAddUser.Text = "Tạo User";
             this.btnAddUser.UseVisualStyleBackColor = true;
+            this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
             // 
             // btnXoaUser
             // 
@@ -131,6 +130,7 @@
             this.btnXoaUser.TabIndex = 8;
             this.btnXoaUser.Text = "Xóa User";
             this.btnXoaUser.UseVisualStyleBackColor = true;
+            this.btnXoaUser.Click += new System.EventHandler(this.btnXoaUser_Click);
             // 
             // btnThoat
             // 
@@ -176,18 +176,30 @@
             this.lblNhom.TabIndex = 12;
             this.lblNhom.Text = "Thuộc nhóm: ";
             // 
+            // lblThongBao
+            // 
+            this.lblThongBao.AutoSize = true;
+            this.lblThongBao.Font = new System.Drawing.Font("Tahoma", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblThongBao.ForeColor = System.Drawing.Color.Red;
+            this.lblThongBao.Location = new System.Drawing.Point(305, 295);
+            this.lblThongBao.Name = "lblThongBao";
+            this.lblThongBao.Size = new System.Drawing.Size(0, 14);
+            this.lblThongBao.TabIndex = 13;
+            this.lblThongBao.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // frmAddLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(796, 423);
+            this.Controls.Add(this.lblThongBao);
             this.Controls.Add(this.lblNhom);
             this.Controls.Add(this.rbGDV);
             this.Controls.Add(this.rbAdmin);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnXoaUser);
             this.Controls.Add(this.btnAddUser);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtPass);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.lblLoginName);
@@ -210,12 +222,13 @@
         private System.Windows.Forms.Label lblLoginName;
         private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.Label lblPassword;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPass;
         private System.Windows.Forms.Button btnAddUser;
         private System.Windows.Forms.Button btnXoaUser;
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.RadioButton rbAdmin;
         private System.Windows.Forms.RadioButton rbGDV;
         private System.Windows.Forms.Label lblNhom;
+        private System.Windows.Forms.Label lblThongBao;
     }
 }
