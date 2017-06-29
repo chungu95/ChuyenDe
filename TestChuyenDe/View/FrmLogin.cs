@@ -26,12 +26,11 @@ namespace TestChuyenDe
             if (con != null && con.State == ConnectionState.Open)
             {
                 Login.doLogin();
-                Form form = new MainForm();Hide();
-                form.Show();
-            }
+                new MainForm().Show();Hide();}
             else
             {
-                MessageBox.Show("Kết nối thất bại");}
+                MessageBox.Show("Sai tên tài khoản hoặc mật khẩu");
+            }
         }
     }
 }

@@ -58,7 +58,6 @@ namespace TestChuyenDe.Model
             }
             return result;
         }
-
         public static Decimal TinhTienLai(PhieuGui phieugui, int type)
         {
             Decimal tienLai = 0;
@@ -99,12 +98,12 @@ namespace TestChuyenDe.Model
             return tienlai;
         }
         private static Decimal LaiRutQuaHan(PhieuGui phieugui){
-            Decimal tienlai = 0;while (phieugui.NgayGui <= DateTime.Today)
+            Decimal tienlai = 0;
+            while (phieugui.NgayGui <= DateTime.Today)
             {
-                MessageBox.Show("lặp");tienlai += LaiRutDungHan(phieugui);
                 phieugui.SoTienGui += LaiRutDungHan(phieugui);
                 phieugui.NgayGui = phieugui.NgayGui.AddMonths(phieugui.Dichvu.Kyhan);
-                if ((phieugui.NgayGui == DateTime.Today))
+                if (phieugui.NgayGui == DateTime.Today)
                 {
                     break;
                 }

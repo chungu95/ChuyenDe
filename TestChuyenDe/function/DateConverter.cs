@@ -17,5 +17,10 @@ namespace TestChuyenDe.function
         {
             return DateTime.Today.AddMonths(KyHan); 
         }
+
+        public static string DateToString(DateTime date)
+        {
+            return date.ToString("dd-MM-yyyy"); 
+        }
     }
 }

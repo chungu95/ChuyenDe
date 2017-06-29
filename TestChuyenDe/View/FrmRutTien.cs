@@ -16,19 +16,20 @@ namespace TestChuyenDe.View
         {
             InitializeComponent();
         }
-        private void cbbCMND_SelectedIndexChanged(object sender, System.EventArgs e)
+
+        private void cbbCMND_SelectionChangeCommitted(object sender, System.EventArgs e)
         {
-            RefreshTTPGComponents();LoadDsPhieuGui(cbbCMND.SelectedValue.ToString());
+            RefreshTtpgComponents();LoadDsPhieuGui(cbbCMND.SelectedValue.ToString());
             LoadThongTinKhachHang(cbbCMND.SelectedValue.ToString());
-        }
+        } 
 
         private void btnLapPhieu_Click(object sender, EventArgs e)
         {
             LoadDsKhachHang();
             txtNgayRut.Text = DateConverter.GetCurrentDateString();
             btnLapPhieu.Enabled = false;}
-        private void LoadDsKhachHang()
-        {
+
+        private void LoadDsKhachHang() {
                 DataTable dt = null;
                 SqlConnection con = Connect.GetConnection();
                 try
@@ -58,16 +59,18 @@ namespace TestChuyenDe.View
                     cbbCMND.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
                     cbbCMND.AutoCompleteSource = AutoCompleteSource.CustomSource;
                 }
-        }private void LoadThongTinKhachHang(string cmnd)
-        {
+        }
+
+        private void LoadThongTinKhachHang(string cmnd){
             KhachHang khachhang = KhachHang.GetDsKhachHang(cmnd);
             if (khachhang != null)
             {
                 txtHoTen.Text = khachhang.HoTen;
                 txtDiaChi.Text = khachhang.DiaChi;
-                txtNgayCap.Text = khachhang.NgayCap.ToString(CultureInfo.InvariantCulture);
+                txtNgayCap.Text = DateConverter.DateToString(khachhang.NgayCap);
             }
         }
+
         private void LoadDsPhieuGui(string cmnd)
         {
             DataTable dataTable = PhieuGui.PhieuGuiByCmnd(cmnd);
@@ -79,28 +82,22 @@ namespace TestChuyenDe.View
             }
             else
             {
-                RefreshTTPGComponents();
+                RefreshTtpgComponents();
                 cbbMaPhieuGui.DataSource = null;}
         }
+
         private void LoadThongTinPhieuGui(string maphieu)
         {
             PhieuGui phieugui = PhieuGui.GetPhieuGui(maphieu);
             if (phieugui != null)
             {txtDichVu.Text = phieugui.Dichvu.Tendv;
                 txtKyHan.Text = phieugui.Dichvu.Kyhan.ToString();
-                txtNgayGui.Text = phieugui.NgayGui.ToString();
-                txtNgayDenHan.Text = phieugui.NgayDenHan.ToString();
-                if (DateTime.Today < phieugui.NgayDenHan)
-                {
-                    txtLaiSuat.Text = DichVu.GetDichVuByMaDv(phieugui.Madv).LaiSuat.Laisuat.ToString();
-                }
-                else
-                {
-                    txtLaiSuat.Text = phieugui.Laisuat.ToString();
-                }
+                txtNgayGui.Text = DateConverter.DateToString(phieugui.NgayGui); txtNgayDenHan.Text = DateConverter.DateToString(phieugui.NgayDenHan);
+                txtLaiSuat.Text =  phieugui.Laisuat.ToString();
                 txtSoTienGui.Text = phieugui.SoTienGui.ToString();
             }
         }
+
         private void cbbMaPhieuGui_SelectionChangeCommitted(object sender, EventArgs e)
         {
             if (cbbMaPhieuGui.SelectedValue != null)
@@ -108,6 +105,7 @@ namespace TestChuyenDe.View
                 LoadThongTinPhieuGui(cbbMaPhieuGui.SelectedValue.ToString());
                 btnTinhLai.Enabled = true;}
         }
+
         private void btnTinhLai_Click(object sender, EventArgs e)
         {
             if (txtSoTienRut.Text.Trim().Equals(""))
@@ -129,30 +127,33 @@ namespace TestChuyenDe.View
                 btnLuuPhieu.Enabled = true;
             }
         }
-        private void btnLuuPhieu_Click(object sender, EventArgs e)
-        {
+
+        private void btnLuuPhieu_Click(object sender, EventArgs e){
             if (txtSoTienRut.Text.Trim().Equals(""))
             {
                 MessageBox.Show("Vui lòng nhập số tiền rút");
             }
             else
             {
-                PhieuRut phieurut = new PhieuRut();
-                phieurut.MaPhieuGui = cbbMaPhieuGui.SelectedValue.ToString();
+                PhieuRut phieurut = new PhieuRut {MaPhieuGui = cbbMaPhieuGui.SelectedValue.ToString()};
                 try
-                {
-                    phieurut.SoTienRut = Decimal.Parse(txtSoTienRut.Text, System.Globalization.NumberStyles.Float);
+                {phieurut.SoTienRut = decimal.Parse(txtSoTienRut.Text, System.Globalization.NumberStyles.Float);
                 }
                 catch (Exception)
                 {
                     MessageBox.Show("Vui lòng nhập số!");
                     return;
                 }
+                if (Decimal.Parse(txtSoTienGui.Text) < phieurut.SoTienRut){MessageBox.Show("Số tiền rút phải nhỏ hơn số tiền còn dư trong phiếu gửi");
+                    return;}
                 phieurut.TienLai = Decimal.Parse(txtTienLai.Text);
                 if (PhieuRut.LuuPhieuRut(phieurut, Login.LgName))
                 {
                     MessageBox.Show("Lập phiếu rút thành công");
-                    RefreshTTPGComponents();
+                    RefreshTtpgComponents();
+                    RefreshTtkhComponents();
+                    btnLapPhieu.Enabled = true;
+                    txtNgayRut.Text = "";
                 }
                 else
                 {
@@ -160,7 +161,8 @@ namespace TestChuyenDe.View
                 }
             }
         }
-        private void RefreshTTPGComponents()
+
+        private void RefreshTtpgComponents()
         {
             txtDichVu.Text = "";
             txtKyHan.Text = "";
@@ -169,8 +171,29 @@ namespace TestChuyenDe.View
             txtLaiSuat.Text = "";
             txtTienLai.Text = "";
             txtSoTienGui.Text = "";
-            btnTinhLai.Enabled = false;
+            txtSoTienRut.Text = "";
+            txtTongTien.Text = "";btnTinhLai.Enabled = false;
             btnLuuPhieu.Enabled = false;
         }
+
+        private void RefreshTtkhComponents(){
+            txtHoTen.Text = "";
+            txtDiaChi.Text = "";
+            txtNgayCap.Text = "";
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có thật sự muốn thoát không?", "Xác nhận", MessageBoxButtons.YesNoCancel);
+            if (result == DialogResult.Yes)
+            {
+                Close();
+            }
+            else
+            {
+                return;
+            }
+        }
+
     }
 }

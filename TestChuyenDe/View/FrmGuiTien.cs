@@ -12,37 +12,46 @@ namespace TestChuyenDe.View
 {
     public partial class FrmGuiTien : XtraForm
     {
-        public FrmGuiTien()
-        {
+        private static bool chonDV = false;
+        private static bool chonKH = false;
+        public FrmGuiTien(){
             InitializeComponent();
+            FormLoad();
         }
 
-        private void FrmGuiTien_Load(object sender, EventArgs e){
+        public void FormLoad()  
+        {
             LoadThongTinKh();
             LoadAllDv();
         }
 
-        private void cbbCMND_SelectedIndexChanged(object sender, EventArgs e)
-        {KhachHang khachhang = KhachHang.GetDsKhachHang(cbbCMND.SelectedValue.ToString());
+        private void cbbCMND_SelectionChangeCommitted(object sender, EventArgs e){KhachHang khachhang = KhachHang.GetDsKhachHang(cbbCMND.SelectedValue.ToString());
             if (khachhang!=null){
                 lblHoTen.Text = khachhang.HoTen;
                 lblDiaChi.Text = khachhang.DiaChi;
                 lblNgayCap.Text = khachhang.NgayCap.ToString(CultureInfo.InvariantCulture);
+                chonKH = true;
+                if (btnLapPhieuMoi.Enabled == false && chonDV)
+                    btnLuuPhieu.Enabled = true;
             }
-        }
+        } 
 
-        private void cbbMaDichVu_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbbMaDichVu_SelectionChangeCommitted(object sender, EventArgs e)
         {
             LoadThongTinDv(cbbMaDichVu.SelectedValue.ToString());
-        }
-
-        private void btnLapPhieuMoi_Click(object sender, EventArgs e)
-        {
+            chonDV = true;
+            if (btnLapPhieuMoi.Enabled == false && chonKH)
+                btnLuuPhieu.Enabled = true;
+        } 
+        private void btnLapPhieuMoi_Click(object sender, EventArgs e){
             txtMaPhieu.Text = RandomKey.GetRandomKey(9);
             txtNgayGui.Text = DateConverter.GetCurrentDateString();
             btnLapPhieuMoi.Enabled = false;
-            btnLuuPhieu.Enabled = true;
             btnXoaPhieu.Enabled = true;
+            if (chonDV && chonKH)
+            {
+                btnLuuPhieu.Enabled = true;
+            }
         }
 
         private void btnXoaPhieu_Click(object sender, EventArgs e)
@@ -91,7 +100,7 @@ namespace TestChuyenDe.View
                 lblLaiSuat.Text = dichvu.LaiSuat.Laisuat.ToString(CultureInfo.InvariantCulture);
                 if (dichvu.Kyhan == 0)
                 {
-                    txtNgayDenHan.Text = DateTime.MaxValue.ToString(); 
+                    txtNgayDenHan.Text = DateTime.MaxValue.ToString(CultureInfo.CurrentCulture); 
                 }
                 else
                 {
@@ -123,39 +132,69 @@ namespace TestChuyenDe.View
             }
         }
         private void RefreshComponents(){
+            // refresh  toàn bộ form.
             txtMaPhieu.Text = "";
             txtNgayGui.Text = "";
             txtNgayDenHan.Text = "";
+            txtSoTienGui.Text = "";
+            lblHoTen.Text = "";
+            lblDiaChi.Text = "";
+            lblNgayCap.Text = "";
+            lblTenDichVu.Text = "";
+            lblNgayDenHan.Text = "";
+            lblLaiSuat.Text = "";
             btnLuuPhieu.Enabled = false;
             btnLapPhieuMoi.Enabled = true;
             btnXoaPhieu.Enabled = false;
+            chonDV = false;
+            chonKH = false;
         }
-
         private void btnLuuPhieu_Click(object sender, EventArgs e)
         {
-            if (txtSoTienGui.Text.Equals(""))
+            if (txtSoTienGui.Text.Trim().Equals(""))
             {
                 MessageBox.Show("Vui lòng nhập số tiền");
+                return;
             }
-            if (Decimal.Parse(txtSoTienGui.Text) < 100000)
+            try
             {
-                MessageBox.Show("Số tiền gửi phải lớn hơn hoặc bằng 100.000");
+                if (Decimal.Parse(txtSoTienGui.Text.Trim()) < 100000)
+                {
+                    MessageBox.Show("Số tiền gửi phải lớn hơn hoặc bằng 100.000");
+                }
+                else
+                {
+                    PhieuGui phieugui = new PhieuGui();
+                    phieugui.MaPhieu = txtMaPhieu.Text;
+                    phieugui.Madv = cbbMaDichVu.SelectedValue.ToString();
+                    phieugui.Cmnd = cbbCMND.SelectedValue.ToString();
+                    phieugui.NgayDenHan = DateConverter.LayNgayDenHan(Int32.Parse(lblKyHan.Text));
+                    phieugui.SoTienGui = Decimal.Parse(txtSoTienGui.Text.Trim());
+                    if (PhieuGui.LuuPhieuGui(phieugui, Login.LgName))
+                    {
+                        MessageBox.Show("Thêm thành công phiếu gửi");RefreshComponents();}
+                    else
+                    {
+                        MessageBox.Show("Thêm thất bại");
+                    }
+                }}
+            catch (FormatException)
+            {
+                txtSoTienGui.Text = "";
+                MessageBox.Show("Số tiền phải là chữ số");
+            }
+        }
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có thật sự muốn thoát không?", "Xác nhận", MessageBoxButtons.YesNoCancel);
+            if (result == DialogResult.Yes)
+            {
+//                FrmLogin.form.Hide();
+                this.Close();
             }
             else
             {
-                PhieuGui phieugui = new PhieuGui();
-                phieugui.MaPhieu = txtMaPhieu.Text;
-                phieugui.Madv = cbbMaDichVu.SelectedValue.ToString();
-                phieugui.Cmnd = cbbCMND.SelectedValue.ToString();
-                phieugui.NgayDenHan = DateConverter.LayNgayDenHan(Int32.Parse(lblKyHan.Text));
-                phieugui.SoTienGui = Decimal.Parse(txtSoTienGui.Text);
-                if (PhieuGui.LuuPhieuGui(phieugui, Login.LgName))
-                {
-                    MessageBox.Show("Thêm thành công phiếu gửi");
-                    RefreshComponents();}
-                else
-                {
-                    MessageBox.Show("Thêm thất bại");}
+                return;
             }
         }
     }

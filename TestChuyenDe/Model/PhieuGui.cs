@@ -134,7 +134,7 @@ namespace TestChuyenDe.Model
             SqlConnection con = Connect.GetConnection();
             try
             {
-                String sql = "SELECT MAPHIEU FROM PHIEUGUI WHERE CMND = '" + cmnd + "'";
+                String sql = "SELECT MAPHIEU FROM PHIEUGUI WHERE CMND = '" + cmnd + "' AND SOTIEN_GUI > 0";
                 SqlCommand sqlCommand = new SqlCommand(sql, con);SqlDataAdapter sqlData = new SqlDataAdapter(sqlCommand);
                 dt = new DataTable();
                 sqlData.Fill(dt);

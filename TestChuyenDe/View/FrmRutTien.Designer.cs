@@ -161,7 +161,7 @@
             this.cbbCMND.Name = "cbbCMND";
             this.cbbCMND.Size = new System.Drawing.Size(147, 22);
             this.cbbCMND.TabIndex = 1;
-            this.cbbCMND.SelectedIndexChanged += new System.EventHandler(this.cbbCMND_SelectedIndexChanged);
+            this.cbbCMND.SelectionChangeCommitted += new System.EventHandler(this.cbbCMND_SelectionChangeCommitted);
             // 
             // lblCMND
             // 
@@ -215,8 +215,7 @@
             this.txtSoTienRut.Name = "txtSoTienRut";
             this.txtSoTienRut.Size = new System.Drawing.Size(155, 23);
             this.txtSoTienRut.TabIndex = 14;
-            this.txtSoTienRut.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
+            this.txtSoTienRut.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;// 
             // txtSoTienGui
             // 
             this.txtSoTienGui.Location = new System.Drawing.Point(125, 278);
@@ -434,6 +433,7 @@
             this.btnThoat.TabIndex = 3;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // btnTinhLai
             // 

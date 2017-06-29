@@ -217,6 +217,19 @@ namespace TestChuyenDe.View
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có thật sự muốn thoát không?", "Xác nhận", MessageBoxButtons.YesNoCancel);
+            if (result == DialogResult.Yes)
+            {
+                Close();
+            }
+            else
+            {
+                return;
+            }
+        }
     }
     
 }
