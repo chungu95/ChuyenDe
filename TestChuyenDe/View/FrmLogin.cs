@@ -26,7 +26,7 @@ namespace TestChuyenDe
             if (con != null && con.State == ConnectionState.Open)
             {
                 Login.doLogin();
-                new MainForm().Show();Hide();}
+                new FrmRutTien().Show();Hide();}
             else
             {
                 MessageBox.Show("Sai tên tài khoản hoặc mật khẩu");
