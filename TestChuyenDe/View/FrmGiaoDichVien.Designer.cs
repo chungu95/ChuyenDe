@@ -52,6 +52,7 @@
             this.txtcmnd = new System.Windows.Forms.TextBox();
             this.txtsodt = new System.Windows.Forms.TextBox();
             this.btnghi = new System.Windows.Forms.Button();
+            this.btnthoat = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -240,6 +241,7 @@
             this.txtcmnd.Name = "txtcmnd";
             this.txtcmnd.Size = new System.Drawing.Size(100, 21);
             this.txtcmnd.TabIndex = 13;
+            this.txtcmnd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcmnd_KeyPress);
             // 
             // txtsodt
             // 
@@ -247,6 +249,7 @@
             this.txtsodt.Name = "txtsodt";
             this.txtsodt.Size = new System.Drawing.Size(100, 21);
             this.txtsodt.TabIndex = 14;
+            this.txtsodt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtsodt_KeyPress);
             // 
             // btnghi
             // 
@@ -257,11 +260,22 @@
             this.btnghi.UseVisualStyleBackColor = true;
             this.btnghi.Click += new System.EventHandler(this.btnghi_Click);
             // 
+            // btnthoat
+            // 
+            this.btnthoat.Location = new System.Drawing.Point(498, 367);
+            this.btnthoat.Name = "btnthoat";
+            this.btnthoat.Size = new System.Drawing.Size(75, 23);
+            this.btnthoat.TabIndex = 20;
+            this.btnthoat.Text = "Thoát";
+            this.btnthoat.UseVisualStyleBackColor = true;
+            this.btnthoat.Click += new System.EventHandler(this.btnthoat_Click);
+            // 
             // FrmGiaoDichVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(653, 438);
+            this.Controls.Add(this.btnthoat);
             this.Controls.Add(this.btnghi);
             this.Controls.Add(this.txtsodt);
             this.Controls.Add(this.txtcmnd);
@@ -314,5 +328,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnthoat;
     }
 }

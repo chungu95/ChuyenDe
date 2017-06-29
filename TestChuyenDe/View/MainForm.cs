@@ -50,7 +50,7 @@ namespace TestChuyenDe.View
 
         private void btnLaiSuat_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var frm = IsExist(typeof(FrmLaiSuat));
+            var frm = IsExist(typeof(FrmLaiSuat2));
             if (frm != null)
             {
                 frm.Activate();
@@ -59,7 +59,7 @@ namespace TestChuyenDe.View
             else
             {
                 Console.Write(frm);
-                var f = new FrmLaiSuat();
+                var f = new FrmLaiSuat2();
                 f.MdiParent = this;
                 f.Show();
             }

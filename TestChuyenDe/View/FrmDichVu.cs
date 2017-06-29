@@ -31,20 +31,6 @@ namespace TestChuyenDe.View
             tbTENDV.Text = string.Empty;
         }
 
-        private void enableEdit()
-        {
-            tbMADV.Enabled = true;
-            tbKYHAN.Enabled = true;
-            tbTENDV.Enabled = true;
-        }
-
-        private void disableEdit()
-        {
-            tbMADV.Enabled = false;
-            tbKYHAN.Enabled = false;
-            tbTENDV.Enabled = false;
-        }
-
         private void getdata()
         {
             var con = Connect.GetConnection();
@@ -59,40 +45,34 @@ namespace TestChuyenDe.View
         private void FrmDichVu_Load(object sender, EventArgs e)
         {
             getdata();
-            
+
         }
 
         private void gridView1_RowClick(object sender, RowClickEventArgs e)
         {
             if (gridView1.RowCount != 0)
             {
-                
+
                 tbMADV.Text = gridView1.GetFocusedDataRow()["MADV"].ToString();
                 tbKYHAN.Text = gridView1.GetFocusedDataRow()["KYHAN"].ToString();
                 tbTENDV.Text = gridView1.GetFocusedDataRow()["TENDICHVU"].ToString();
-               
+
             }
         }
 
         private void btnThemDV_ItemClick(object sender, ItemClickEventArgs e)
         {
-            enableEdit();
-            clearEdit();
-            btnGhi.Text = "Thêm";
-            mode = 1;
+
         }
 
         private void btnXoaDV_ItemClick(object sender, ItemClickEventArgs e)
         {
-            enableEdit();
-            clearEdit();
-            btnGhi.Text = "Xóa";
-            mode = 2;
+
         }
 
         private void btnSửa_ItemClick(object sender, ItemClickEventArgs e)
         {
-            enableEdit();
+
             clearEdit();
             btnGhi.Text = "Sửa";
             mode = 3;
@@ -100,39 +80,66 @@ namespace TestChuyenDe.View
 
         private void btnGhi_Click(object sender, EventArgs e)
         {
-            var con = Connect.GetConnection();
-            if (mode == 1)
+            var madv = tbMADV.Text;
+            var tendv = tbTENDV.Text;
+            string kyhan = tbKYHAN.Text;
+            if (string.IsNullOrWhiteSpace(tbMADV.Text))
             {
-                var madv = tbMADV.Text;
-                var tendv = tbTENDV.Text;
-                var kyhan = tbKYHAN.Text;
-                using (var spCommand = con.CreateCommand())
-                {
-                    spCommand.CommandText = "SP_ThemDV";
-                    spCommand.CommandType = CommandType.StoredProcedure;
+                MessageBox.Show("Bạn chưa chọn dịch vụ");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(tbKYHAN.Text))
+            {
+                MessageBox.Show("Bạn chưa nhập kỳ hạn");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(tbTENDV.Text))
+            {
+                MessageBox.Show("Bạn chưa nhập tên dịch vụ");
+                return;
+            }
 
-                    spCommand.Parameters.AddWithValue("@MADV", madv);
-                    spCommand.Parameters.AddWithValue("@KYHAN", kyhan);
-                    spCommand.Parameters.AddWithValue("@TENDV", tendv);
+
+            var con = Connect.GetConnection();
+            if (mode == 3)
+            {
+
+                using (SqlCommand command = con.CreateCommand())
+                {
+                    command.CommandText = "SP_SUA_DICH_VU";
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@MADV", madv);
+                    command.Parameters.AddWithValue("@TENDICHVU", tendv);
+                    command.Parameters.AddWithValue("@KYHAN", kyhan);
                     try
                     {
-                        spCommand.ExecuteNonQuery();
-                        MessageBox.Show("Thêm thành công");
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("Sửa dịch vụ thành công");
                         getdata();
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                     }
-                   
-                    
+
                 }
             }
         }
 
+
+
+
+
         private void btnthoat_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void tbKYHAN_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))
+                e.Handled = true;
         }
     }
 }

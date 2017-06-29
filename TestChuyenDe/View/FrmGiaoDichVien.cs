@@ -11,7 +11,7 @@ namespace TestChuyenDe.View
     public partial class FrmGiaoDichVien : XtraForm
     {
         private int currentRow;
-        private int mode;
+        private int mode=0;
         public FrmGiaoDichVien()
         {
             InitializeComponent();
@@ -28,7 +28,7 @@ namespace TestChuyenDe.View
 
         private void enableEdit()
         {
-           
+
             txthoten.Enabled = true;
             txtsodt.Enabled = true;
             txtdiachi.Enabled = true;
@@ -73,7 +73,7 @@ namespace TestChuyenDe.View
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             btnghi.Text = "Sửa";
-            mode = 3;
+            mode = 2;
             enableEdit();
 
         }
@@ -99,30 +99,60 @@ namespace TestChuyenDe.View
             }
         }
 
+        private Boolean checknhaplieu()
+        {
+            if (string.IsNullOrWhiteSpace(txthoten.Text))
+            {
+                MessageBox.Show("Bạn chưa điền họ tên");
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtdiachi.Text))
+            {
+                MessageBox.Show("Bạn chưa điền địa chỉ");
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtcmnd.Text))
+            {
+                MessageBox.Show("Bạn chưa điền CMND");
+                return false;
+            }
+            if (txtcmnd.Text.Length < 9 || txtcmnd.Text.Length > 9)
+            {
+                MessageBox.Show("cmnd phải có 9 kí tự");
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtsodt.Text))
+            {
+                MessageBox.Show("Bạn chưa điền số điện thoại");
+                return false;
+            }
+            return true;
+        }
+
         private void btnghi_Click(object sender, System.EventArgs e)
         {
-            var sodt = txtsodt.Text;
-            var cmnd = txtcmnd.Text;
-            int sodtso = 0;
-            int cmndso = 0;
-            try
+            if (mode == 0)
             {
-                sodtso = int.Parse(sodt);
-                cmndso = int.Parse(cmnd);
-                
-            }catch(Exception ex)
-            {
-                MessageBox.Show("Số điện thoại hoặc cmnd phải là số");
+                MessageBox.Show("Bạn chưa chọn chế đô");
                 return;
             }
+           
+            var sodt = txtsodt.Text;
+            var cmnd = txtcmnd.Text;
+
 
             var con = Connect.GetConnection();
             if (mode == 1)
             {
+                if (!checknhaplieu())
+                {
+                    return;
+                }
                 var magdv = RandomKey.GetRandomKey(7);
-               
+
                 var hoten = txthoten.Text;
-                
+
                 var diachi = txtdiachi.Text;
 
 
@@ -152,11 +182,20 @@ namespace TestChuyenDe.View
             }
             else if (mode == 2)
             {
+                if (string.IsNullOrWhiteSpace(txtmagdv.Text))
+                {
+                    MessageBox.Show("Bạn chưa chọn GDV để sửa");
+                    return;
+                }
+                if (!checknhaplieu())
+                {
+                    return;
+                }
                 txtmagdv.Enabled = false;
                 var magdv = txtmagdv.Text;
-                
+
                 var hoten = txthoten.Text;
-                
+
                 var diachi = txtdiachi.Text;
                 using (var command = con.CreateCommand())
                 {
@@ -186,7 +225,11 @@ namespace TestChuyenDe.View
 
             else if (mode == 3)
             {
-
+                if (string.IsNullOrWhiteSpace(txtmagdv.Text))
+                {
+                    MessageBox.Show("Bạn chưa chọn GDV để xóa");
+                    return;
+                }
                 var magdv = txtmagdv.Text;
                 using (var command = con.CreateCommand())
                 {
@@ -211,5 +254,21 @@ namespace TestChuyenDe.View
 
         }
 
+        private void btnthoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void txtcmnd_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))
+                e.Handled = true;
+        }
+
+        private void txtsodt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))
+                e.Handled = true;
+        }
     }
-    }
+}

@@ -13,7 +13,7 @@ namespace TestChuyenDe.View
     {
 
         private int currentRow;
-        private int mode;
+        private int mode = 0;
         public FrmKhachHang()
         {
             InitializeComponent();
@@ -92,36 +92,69 @@ namespace TestChuyenDe.View
         {
             if (gridView1.RowCount != 0)
             {
-        
+
 
                 txthoten.Text = gridView1.GetFocusedDataRow()["HOTEN"].ToString();
                 txtdiachi.Text = gridView1.GetFocusedDataRow()["DIACHI"].ToString();
                 txtcmnd.Text = gridView1.GetFocusedDataRow()["CMND"].ToString();
-                ngaycap.Value =(DateTime) gridView1.GetFocusedDataRow()["NGAYCAP"];      
+                ngaycap.Value = (DateTime)gridView1.GetFocusedDataRow()["NGAYCAP"];
             }
 
         }
+        private Boolean checknhaplieu()
+        {
+            if (string.IsNullOrWhiteSpace(txthoten.Text))
+            {
+                MessageBox.Show("Bạn chưa điền họ tên");
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtdiachi.Text))
+            {
+                MessageBox.Show("Bạn chưa điền địa chỉ");
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtcmnd.Text))
+            {
+                MessageBox.Show("Bạn chưa diền cmnd");
+                return false;
+            }
+            if (txtcmnd.Text.Length < 9 || txtcmnd.Text.Length > 9)
+            {
+                MessageBox.Show("cmnd phải có 9 kí tự");
+                return false;
+            }
 
+            if (string.IsNullOrWhiteSpace(ngaycap.Value.ToString()))
+            {
+                MessageBox.Show("Bạn chưa chọn ngày cấp");
+                return false;
+            }
+            return true;
+        }
         private void btnghi_Click(object sender, EventArgs e)
         {
-            var hoten = txthoten.Text;
+            if (mode == 0)
+            {
+                MessageBox.Show("Bạn hãy chọn chế độ");
+                return;   
+            }
+          
+             var hoten = txthoten.Text;
             var diachi = txtdiachi.Text;
             string cmnd = txtcmnd.Text;
-            int cmndso = 0;
+
             var Ngaycap = ngaycap.Value.ToString("yyyy-MM-dd");
             var con = Connect.GetConnection();
 
-            try {
-                cmndso = int.Parse(cmnd);
-                
-            } catch (Exception ex) {
-                MessageBox.Show("CMND phải là 1 chữ số");
-                return;
-            }
+
             if (mode == 1)//them
             {
-               
 
+                if (!checknhaplieu())
+                {
+                    return;
+
+                }
                 using (var spCommand = con.CreateCommand())
                 {
 
@@ -142,11 +175,22 @@ namespace TestChuyenDe.View
                     {
                         MessageBox.Show(ex.Message);
                     }
-                }  
                 }
+            }
             else if (mode == 2)//sua
             {
-               
+                if (string.IsNullOrWhiteSpace(txthoten.Text) || string.IsNullOrWhiteSpace(txtcmnd.Text))
+                {
+                    MessageBox.Show("Bạn chưa chọn Khách Hàng để sửa");
+                    return;
+                }
+
+
+                if(!checknhaplieu())
+                {
+                    return;
+                }
+
                 using (var spCommand = con.CreateCommand())
                 {
                     spCommand.CommandText = "SP_SUA_KHACH_HANG";
@@ -168,11 +212,16 @@ namespace TestChuyenDe.View
                     }
                 }
 
+            }
+
+            else if (mode == 3)//xoa
+            {
+                if (string.IsNullOrWhiteSpace(txthoten.Text))
+                {
+                    MessageBox.Show("Bạn chưa chọn Khách Hàng để xóa");
+                    return;
                 }
 
-            else if(mode == 3)//xoa
-            {
-               
                 using (var spcommand = con.CreateCommand())
                 {
                     spcommand.CommandText = "SP_XoaKhachHang";
@@ -184,15 +233,28 @@ namespace TestChuyenDe.View
                         MessageBox.Show("Xóa Khách Hàng thành công");
                         getdata();
 
-                    } catch (Exception ex)
+                    }
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Xóa thất bại");
+
+                        MessageBox.Show(ex.Message);
                     }
 
                 }
 
             }
 
-            }
+        }
+
+        private void btnthoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void txtcmnd_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))
+                e.Handled = true;
+        }
     }
-    }
+}

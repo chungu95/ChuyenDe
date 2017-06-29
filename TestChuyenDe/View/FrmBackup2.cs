@@ -18,7 +18,7 @@ namespace TestChuyenDe.View
     public partial class FrmBackup2 : DevExpress.XtraEditors.XtraForm
     {
         string date;
-        string position="0";
+        string position = "0";
         public FrmBackup2()
         {
             InitializeComponent();
@@ -37,7 +37,7 @@ namespace TestChuyenDe.View
         {
 
             getdata();
-            
+
 
         }
 
@@ -83,30 +83,30 @@ namespace TestChuyenDe.View
 
         }
 
-      
+
 
         private void gridView1_RowClick(object sender, RowClickEventArgs e)
         {
-            
-            position=gridView1.GetFocusedDataRow()["position"].ToString();
-            
-            
+
+            position = gridView1.GetFocusedDataRow()["position"].ToString();
+
+
         }
 
-   
 
 
 
-    private void btnrestore_Click(object sender, EventArgs e)
+
+        private void btnrestore_Click(object sender, EventArgs e)
         {
-            
-            
+
+
         }
 
         private void btnrestore_Click_1(object sender, EventArgs e)
         {
 
-            if( position.Equals("0"))
+            if (position.Equals("0"))
             {
                 MessageBox.Show("bạn chưa chọn file để restore");
             }
@@ -119,13 +119,16 @@ namespace TestChuyenDe.View
                 {
                     command.ExecuteNonQuery();
                     MessageBox.Show("restore thành công");
+                    MessageBox.Show("Xin vui lòng đăng nhập lại vào hệ thống");
+                    Application.Restart();
+                    this.Close();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
             }
-           
+
         }
 
         private void btnthoat_Click(object sender, EventArgs e)

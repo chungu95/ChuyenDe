@@ -40,8 +40,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
-            this.btnThemDV = new DevExpress.XtraBars.BarButtonItem();
-            this.btnXoaDV = new DevExpress.XtraBars.BarButtonItem();
             this.btnSửa = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -81,6 +79,7 @@
             // 
             this.tbMADV.Location = new System.Drawing.Point(256, 271);
             this.tbMADV.Name = "tbMADV";
+            this.tbMADV.ReadOnly = true;
             this.tbMADV.Size = new System.Drawing.Size(144, 21);
             this.tbMADV.TabIndex = 1;
             // 
@@ -90,6 +89,7 @@
             this.tbKYHAN.Name = "tbKYHAN";
             this.tbKYHAN.Size = new System.Drawing.Size(144, 21);
             this.tbKYHAN.TabIndex = 2;
+            this.tbKYHAN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbKYHAN_KeyPress);
             // 
             // tbTENDV
             // 
@@ -136,8 +136,6 @@
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.btnThemDV,
-            this.btnXoaDV,
             this.btnSửa,
             this.barButtonItem1});
             this.barManager1.MainMenu = this.bar2;
@@ -151,26 +149,10 @@
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.btnThemDV, false),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.btnXoaDV, false),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnSửa)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
-            // 
-            // btnThemDV
-            // 
-            this.btnThemDV.Caption = "Thêm";
-            this.btnThemDV.Id = 0;
-            this.btnThemDV.Name = "btnThemDV";
-            this.btnThemDV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThemDV_ItemClick);
-            // 
-            // btnXoaDV
-            // 
-            this.btnXoaDV.Caption = "Xóa";
-            this.btnXoaDV.Id = 1;
-            this.btnXoaDV.Name = "btnXoaDV";
-            this.btnXoaDV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnXoaDV_ItemClick);
             // 
             // btnSửa
             // 
@@ -288,8 +270,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private DevExpress.XtraBars.BarButtonItem btnThemDV;
-        private DevExpress.XtraBars.BarButtonItem btnXoaDV;
         private DevExpress.XtraBars.BarButtonItem btnSửa;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private System.Windows.Forms.Button btnGhi;
