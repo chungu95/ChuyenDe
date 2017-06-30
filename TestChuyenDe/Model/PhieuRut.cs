@@ -95,26 +95,22 @@ namespace TestChuyenDe.Model
             float laisuat = phieugui.Laisuat;
             float sotiengui = float.Parse(phieugui.SoTienGui.ToString());
             tienlai = Decimal.Parse((sotiengui * (laisuat / 12) * dichvu.Kyhan).ToString(), System.Globalization.NumberStyles.Float);
-            MessageBox.Show(tienlai.ToString());
             return tienlai;
         }
         private static Decimal LaiRutQuaHan(PhieuGui phieugui){
             Decimal tienlai = 0;
-            while (phieugui.NgayGui <= DateTime.Today)
-            {
+            while (phieugui.NgayGui <= DateTime.Today){
                 phieugui.NgayGui = phieugui.NgayGui.AddMonths(phieugui.Dichvu.Kyhan);
                 if (phieugui.NgayGui > DateTime.Today)
                 {
                     break;
                 }
                 tienlai += LaiRutDungHan(phieugui);phieugui.SoTienGui += LaiRutDungHan(phieugui);
-                MessageBox.Show(tienlai + " | "+phieugui.NgayGui);
             } if (phieugui.NgayGui.AddMonths(-phieugui.Dichvu.Kyhan) < DateTime.Today)
             {
                 phieugui.NgayGui = phieugui.NgayGui.AddMonths(-phieugui.Dichvu.Kyhan);MessageBox.Show("Truoc");
                 tienlai += LaiRutTruocHan(phieugui);
             }
-            MessageBox.Show(tienlai.ToString());
             return tienlai;
             
         }

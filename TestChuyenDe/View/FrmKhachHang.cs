@@ -93,7 +93,6 @@ namespace TestChuyenDe.View
             if (gridView1.RowCount != 0)
             {
 
-
                 txthoten.Text = gridView1.GetFocusedDataRow()["HOTEN"].ToString();
                 txtdiachi.Text = gridView1.GetFocusedDataRow()["DIACHI"].ToString();
                 txtcmnd.Text = gridView1.GetFocusedDataRow()["CMND"].ToString();
@@ -139,9 +138,9 @@ namespace TestChuyenDe.View
                 return;   
             }
           
-             var hoten = txthoten.Text;
-            var diachi = txtdiachi.Text;
-            string cmnd = txtcmnd.Text;
+             var hoten = txthoten.Text.Trim();
+            var diachi = txtdiachi.Text.Trim();
+            string cmnd = txtcmnd.Text.Trim();
 
             var Ngaycap = ngaycap.Value.ToString("yyyy-MM-dd");
             var con = Connect.GetConnection();

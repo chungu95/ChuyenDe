@@ -7,8 +7,7 @@ using TestChuyenDe.Model;
 
 namespace TestChuyenDe.View
 {
-    public partial class MainForm : RibbonForm
-    {
+    public partial class MainForm : RibbonForm{
         public MainForm()
         {
             InitializeComponent();LoadComponents();
@@ -16,11 +15,13 @@ namespace TestChuyenDe.View
 
         public void LoadComponents()
         {
-            if(Login.Role.Equals("GDV")){
-                btnBackupRestore.Enabled = false;
-                btnAddLogin.Enabled = false;
-                btnGiaoDichVien.Enabled = false;
-            }
+            if(Login.Role.Equals("GDV"))
+            {
+                rpgDoiPass.Visible = false;
+                rpgBackupRestore.Visible = false;
+                rpgGiaoDichVien.Visible = false;
+                rpgTaoTaiKhoan.Visible = false;
+                rpgTongTien.Visible = false;}
         }
         
         private Form IsExist(Type fType)
@@ -160,14 +161,6 @@ namespace TestChuyenDe.View
                 f.Show();
             }
         }
-        private void ribbon_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-        }
 
         private void btnAddLogin_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -223,6 +216,35 @@ namespace TestChuyenDe.View
                 var f = new FrmBackup2();
                 f.MdiParent = this;
                 f.Show();
+            }
+        }
+
+        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var frm = IsExist(typeof(FrmDoiPass));
+            if (frm != null)
+            {
+                frm.Activate();
+                Console.Write(frm);
+            }
+            else
+            {
+                Console.Write(frm);
+                var f = new FrmDoiPass();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)  //logout
+        {
+            DialogResult result = MessageBox.Show("Bạn có thật sự muốn thoát không?", "Xác nhận", MessageBoxButtons.YesNoCancel);
+            if (result == DialogResult.Yes)
+            {
+                Application.Restart();}
+            else
+            {
+                return;
             }
         }
     }

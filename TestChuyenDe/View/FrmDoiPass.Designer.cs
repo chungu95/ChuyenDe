@@ -40,6 +40,8 @@
             this.btnAccept = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
             this.lblLgName = new System.Windows.Forms.Label();
+            this.lblOldPass = new System.Windows.Forms.Label();
+            this.txtOldPass = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblMaGDV
@@ -67,7 +69,7 @@
             // 
             this.lblHoTen.AutoSize = true;
             this.lblHoTen.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHoTen.Location = new System.Drawing.Point(118, 103);
+            this.lblHoTen.Location = new System.Drawing.Point(118, 106);
             this.lblHoTen.Name = "lblHoTen";
             this.lblHoTen.Size = new System.Drawing.Size(76, 16);
             this.lblHoTen.TabIndex = 2;
@@ -75,7 +77,7 @@
             // 
             // txtHoten
             // 
-            this.txtHoten.Location = new System.Drawing.Point(278, 103);
+            this.txtHoten.Location = new System.Drawing.Point(278, 105);
             this.txtHoten.Name = "txtHoten";
             this.txtHoten.ReadOnly = true;
             this.txtHoten.Size = new System.Drawing.Size(281, 21);
@@ -85,7 +87,7 @@
             // 
             this.lblNewPass.AutoSize = true;
             this.lblNewPass.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNewPass.Location = new System.Drawing.Point(118, 155);
+            this.lblNewPass.Location = new System.Drawing.Point(118, 216);
             this.lblNewPass.Name = "lblNewPass";
             this.lblNewPass.Size = new System.Drawing.Size(99, 16);
             this.lblNewPass.TabIndex = 4;
@@ -93,7 +95,7 @@
             // 
             // txtNewPass
             // 
-            this.txtNewPass.Location = new System.Drawing.Point(278, 154);
+            this.txtNewPass.Location = new System.Drawing.Point(278, 215);
             this.txtNewPass.Name = "txtNewPass";
             this.txtNewPass.PasswordChar = '*';
             this.txtNewPass.Size = new System.Drawing.Size(281, 21);
@@ -101,7 +103,7 @@
             // 
             // txtReType
             // 
-            this.txtReType.Location = new System.Drawing.Point(278, 209);
+            this.txtReType.Location = new System.Drawing.Point(278, 266);
             this.txtReType.Name = "txtReType";
             this.txtReType.PasswordChar = '*';
             this.txtReType.Size = new System.Drawing.Size(281, 21);
@@ -112,7 +114,7 @@
             // 
             this.lblReType.AutoSize = true;
             this.lblReType.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblReType.Location = new System.Drawing.Point(118, 210);
+            this.lblReType.Location = new System.Drawing.Point(118, 267);
             this.lblReType.Name = "lblReType";
             this.lblReType.Size = new System.Drawing.Size(127, 16);
             this.lblReType.TabIndex = 7;
@@ -122,7 +124,7 @@
             // 
             this.lblOk.AutoSize = true;
             this.lblOk.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOk.Location = new System.Drawing.Point(532, 210);
+            this.lblOk.Location = new System.Drawing.Point(595, 266);
             this.lblOk.Name = "lblOk";
             this.lblOk.Size = new System.Drawing.Size(0, 23);
             this.lblOk.TabIndex = 8;
@@ -130,17 +132,18 @@
             // btnAccept
             // 
             this.btnAccept.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAccept.Location = new System.Drawing.Point(170, 263);
+            this.btnAccept.Location = new System.Drawing.Point(169, 345);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(127, 40);
             this.btnAccept.TabIndex = 9;
             this.btnAccept.Text = "Đồng ý";
             this.btnAccept.UseVisualStyleBackColor = true;
+            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
             // btnThoat
             // 
             this.btnThoat.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThoat.Location = new System.Drawing.Point(335, 263);
+            this.btnThoat.Location = new System.Drawing.Point(334, 345);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(128, 40);
             this.btnThoat.TabIndex = 10;
@@ -157,11 +160,31 @@
             this.lblLgName.Size = new System.Drawing.Size(0, 16);
             this.lblLgName.TabIndex = 11;
             // 
+            // lblOldPass
+            // 
+            this.lblOldPass.AutoSize = true;
+            this.lblOldPass.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOldPass.Location = new System.Drawing.Point(118, 163);
+            this.lblOldPass.Name = "lblOldPass";
+            this.lblOldPass.Size = new System.Drawing.Size(91, 14);
+            this.lblOldPass.TabIndex = 12;
+            this.lblOldPass.Text = "Mật khẩu cũ: ";
+            // 
+            // txtOldPass
+            // 
+            this.txtOldPass.Location = new System.Drawing.Point(278, 161);
+            this.txtOldPass.Name = "txtOldPass";
+            this.txtOldPass.PasswordChar = '*';
+            this.txtOldPass.Size = new System.Drawing.Size(281, 21);
+            this.txtOldPass.TabIndex = 13;
+            // 
             // FrmDoiPass
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(628, 343);
+            this.ClientSize = new System.Drawing.Size(628, 428);
+            this.Controls.Add(this.txtOldPass);
+            this.Controls.Add(this.lblOldPass);
             this.Controls.Add(this.lblLgName);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnAccept);
@@ -195,5 +218,7 @@
         private System.Windows.Forms.Button btnAccept;
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.Label lblLgName;
+        private System.Windows.Forms.Label lblOldPass;
+        private System.Windows.Forms.TextBox txtOldPass;
     }
 }

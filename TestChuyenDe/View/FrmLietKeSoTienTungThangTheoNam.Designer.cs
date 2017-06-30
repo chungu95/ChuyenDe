@@ -49,6 +49,7 @@
             this.txtnam.Name = "txtnam";
             this.txtnam.Size = new System.Drawing.Size(100, 21);
             this.txtnam.TabIndex = 1;
+            this.txtnam.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtnam_KeyPress);
             // 
             // btnxacnhan
             // 

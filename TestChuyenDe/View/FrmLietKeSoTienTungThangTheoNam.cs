@@ -29,5 +29,11 @@ namespace TestChuyenDe.View
 
             report.ShowPreview();
         }
+
+        private void txtnam_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))
+                e.Handled = true;
+        }
     }
 }

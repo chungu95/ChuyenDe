@@ -82,7 +82,7 @@ namespace TestChuyenDe.View
         {
             var madv = tbMADV.Text;
             var tendv = tbTENDV.Text;
-            string kyhan = tbKYHAN.Text;
+            string kyhan = tbKYHAN.Text.Trim();
             if (string.IsNullOrWhiteSpace(tbMADV.Text))
             {
                 MessageBox.Show("Bạn chưa chọn dịch vụ");

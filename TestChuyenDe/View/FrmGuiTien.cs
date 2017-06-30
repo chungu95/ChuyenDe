@@ -29,13 +29,12 @@ namespace TestChuyenDe.View
             if (khachhang!=null){
                 lblHoTen.Text = khachhang.HoTen;
                 lblDiaChi.Text = khachhang.DiaChi;
-                lblNgayCap.Text = khachhang.NgayCap.ToString(CultureInfo.InvariantCulture);
+                lblNgayCap.Text = DateConverter.DateToString(khachhang.NgayCap);
                 chonKH = true;
                 if (btnLapPhieuMoi.Enabled == false && chonDV)
                     btnLuuPhieu.Enabled = true;
             }
         } 
-
         private void cbbMaDichVu_SelectionChangeCommitted(object sender, EventArgs e)
         {
             LoadThongTinDv(cbbMaDichVu.SelectedValue.ToString());
@@ -53,7 +52,6 @@ namespace TestChuyenDe.View
                 btnLuuPhieu.Enabled = true;
             }
         }
-
         private void btnXoaPhieu_Click(object sender, EventArgs e)
         {
             RefreshComponents();
@@ -79,15 +77,6 @@ namespace TestChuyenDe.View
                             cbbCMND.ValueMember = "CMND";
                             cbbCMND.DisplayMember = "CMND";
                             cbbCMND.DataSource = dt;
-                            AutoCompleteStringCollection cmnd = new AutoCompleteStringCollection();
-                            for (int i = 0; i <= dt.Rows.Count - 1; i++)
-                            {
-                                for (int j = 0; j <= dt.Columns.Count - 1; j++)
-                                    cmnd.Add(dt.Rows[i][j].ToString());
-                            }
-                            cbbCMND.AutoCompleteCustomSource = cmnd;
-                            cbbCMND.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                            cbbCMND.AutoCompleteSource = AutoCompleteSource.CustomSource;
                         }
         }
         private void LoadThongTinDv(string madv){
@@ -100,12 +89,11 @@ namespace TestChuyenDe.View
                 lblLaiSuat.Text = dichvu.LaiSuat.Laisuat.ToString(CultureInfo.InvariantCulture);
                 if (dichvu.Kyhan == 0)
                 {
-                    txtNgayDenHan.Text = DateTime.MaxValue.ToString(CultureInfo.CurrentCulture); 
+                    txtNgayDenHan.Text = DateConverter.DateToString(DateTime.MaxValue); 
                 }
                 else
                 {
-                    txtNgayDenHan.Text = DateConverter.LayNgayDenHan(dichvu.Kyhan).ToString(CultureInfo.InvariantCulture);
-                }
+                    txtNgayDenHan.Text = DateConverter.DateToString(DateConverter.LayNgayDenHan(dichvu.Kyhan));}
             }
         }
         private void LoadAllDv()
@@ -156,8 +144,6 @@ namespace TestChuyenDe.View
                 MessageBox.Show("Vui lòng nhập số tiền");
                 return;
             }
-            try
-            {
                 if (Decimal.Parse(txtSoTienGui.Text.Trim()) < 100000)
                 {
                     MessageBox.Show("Số tiền gửi phải lớn hơn hoặc bằng 100.000");
@@ -177,12 +163,7 @@ namespace TestChuyenDe.View
                     {
                         MessageBox.Show("Thêm thất bại");
                     }
-                }}
-            catch (FormatException)
-            {
-                txtSoTienGui.Text = "";
-                MessageBox.Show("Số tiền phải là chữ số");
-            }
+                }
         }
         private void btnThoat_Click(object sender, EventArgs e)
         {
@@ -196,6 +177,16 @@ namespace TestChuyenDe.View
             {
                 return;
             }
+        }
+
+        private void txtSoTienGui_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))
+                e.Handled = true;}
+
+        private void FrmGuiTien_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

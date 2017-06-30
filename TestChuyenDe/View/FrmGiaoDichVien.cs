@@ -138,8 +138,8 @@ namespace TestChuyenDe.View
                 return;
             }
            
-            var sodt = txtsodt.Text;
-            var cmnd = txtcmnd.Text;
+            var sodt = txtsodt.Text.Trim();
+            var cmnd = txtcmnd.Text.Trim();
 
 
             var con = Connect.GetConnection();
@@ -151,9 +151,9 @@ namespace TestChuyenDe.View
                 }
                 var magdv = RandomKey.GetRandomKey(7);
 
-                var hoten = txthoten.Text;
+                var hoten = txthoten.Text.Trim();
 
-                var diachi = txtdiachi.Text;
+                var diachi = txtdiachi.Text.Trim();
 
 
                 using (var command = con.CreateCommand())

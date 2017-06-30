@@ -365,6 +365,7 @@
             this.txtSoTienGui.Size = new System.Drawing.Size(138, 21);
             this.txtSoTienGui.TabIndex = 12;
             this.txtSoTienGui.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSoTienGui.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoTienGui_KeyPress);
             // 
             // lblNgayDenHan
             // 
@@ -408,6 +409,7 @@
             this.Controls.Add(this.lblTieuDe);
             this.Name = "FrmGuiTien";
             this.Text = "FrmGuiTien";
+            this.Load += new System.EventHandler(this.FrmGuiTien_Load);
             this.gbThongTinKhachHang.ResumeLayout(false);
             this.gbThongTinKhachHang.PerformLayout();
             this.gbThongTinDichVu.ResumeLayout(false);

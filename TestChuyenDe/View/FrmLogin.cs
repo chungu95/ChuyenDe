@@ -6,8 +6,7 @@ using TestChuyenDe.DAL.connect;
 using TestChuyenDe.View;
 using TestChuyenDe.Model;
 
-namespace TestChuyenDe
-{
+namespace TestChuyenDe {
     public partial class FrmLogin : XtraForm
     {
         public FrmLogin()
@@ -18,15 +17,15 @@ namespace TestChuyenDe
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            Login.LgName = txtLoginName.Text;
-            Login.Password = txtPassword.Text;
+            Login.LgName = txtLoginName.Text.Trim();
+            Login.Password = txtPassword.Text.Trim();
             Connect.ConnectionString = "Data Source=" + Connect.DatasourceName + ";Initial Catalog=" + Connect.DatabaseName +
                                ";User ID=" + Login.LgName + ";Password=" + Login.Password;
             var con = Connect.GetConnection();
             if (con != null && con.State == ConnectionState.Open)
             {
                 Login.doLogin();
-                new FrmRutTien().Show();Hide();}
+                new MainForm().Show();Hide();}
             else
             {
                 MessageBox.Show("Sai tên tài khoản hoặc mật khẩu");

@@ -112,6 +112,9 @@ namespace TestChuyenDe.View
             {
                 MessageBox.Show("Vui lòng nhập số tiền rút");
             }
+            else if (Decimal.Parse(txtSoTienRut.Text.Trim())<=0)
+            {MessageBox.Show("Số tiền rút phải lớn hơn 0");
+            }
             else
             {
                 PhieuGui phieugui = PhieuGui.GetPhieuGui(cbbMaPhieuGui.SelectedValue.ToString());
